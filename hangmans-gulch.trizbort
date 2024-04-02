@@ -1,0 +1,326 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<trizbort version="1.5.9.3">
+	<info>
+		<title>Hangman's Gulch</title>
+		<author>John H Doolittle, Garry Francis</author>
+	</info>
+	<map>
+		<room id="1" name="Midway up Tree" subtitle="" x="-160" y="-240" w="80" h="40" region="Normal" handDrawn="no" allcornersequal="no" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="1" cornerTopRight="1" cornerBottomLeft="1" cornerBottomRight="1" borderstyle="Solid" description="" roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSmallText="">
+			<objects at="wsw">Hanging tree|Rope|Dummy rope</objects>
+		</room>
+		<room id="2" name="Ledge Inside Well" subtitle="" x="-400" y="-160" w="80" h="40" region="Treasure" handDrawn="no" allcornersequal="no" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="1" cornerTopRight="1" cornerBottomLeft="1" cornerBottomRight="1" borderstyle="Solid" description="" roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSmallText="">
+			<objects at="wsw">Well|Ledge|*Silver*</objects>
+		</room>
+		<room id="3" name="Rattlesnake Wells" subtitle="" x="-280" y="-160" w="80" h="40" region="Normal" handDrawn="no" allcornersequal="no" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="1" cornerTopRight="1" cornerBottomLeft="1" cornerBottomRight="1" borderstyle="Solid" description="" roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSmallText="">
+			<objects at="wsw">Well|Snake|Bulk water|(Water)</objects>
+		</room>
+		<room id="4" name="Hanging Tree" subtitle="" x="-160" y="-160" w="80" h="40" region="Normal" handDrawn="no" allcornersequal="no" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="1" cornerTopRight="1" cornerBottomLeft="1" cornerBottomRight="1" borderstyle="Solid" isDark="yes" description="" roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSmallText="">
+			<objects at="wsw">Hanging tree|Town|Sign|Dummy rope|(Rope)</objects>
+		</room>
+		<room id="5" name="Sandy Desert" subtitle="" x="-40" y="-160" w="80" h="40" region="Normal" handDrawn="no" allcornersequal="no" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="1" cornerTopRight="1" cornerBottomLeft="1" cornerBottomRight="1" borderstyle="Solid" description="" roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSmallText="">
+			<objects at="wsw">Sand|(Key)</objects>
+		</room>
+		<room id="6" name="Street" subtitle="" x="-160" y="-80" w="80" h="40" region="Normal" handDrawn="no" allcornersequal="no" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="1" cornerTopRight="1" cornerBottomLeft="1" cornerBottomRight="1" borderstyle="Solid" description="" roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSmallText="">
+			<objects at="wsw">Town|Street|Last Chance Saloon|Hardrock Jail|Jail door</objects>
+		</room>
+		<room id="7" name="Hardrock Jail" subtitle="" x="-40" y="-80" w="80" h="40" region="Normal" handDrawn="no" allcornersequal="no" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="1" cornerTopRight="1" cornerBottomLeft="1" cornerBottomRight="1" borderstyle="Solid" description="" roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSmallText="">
+			<objects at="wsw">Hardrock Jail|Jail door|Cup</objects>
+		</room>
+		<room id="10" name="Golden Well Hotel" subtitle="" x="-40" y="0" w="80" h="40" region="Treasure" handDrawn="no" allcornersequal="no" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="1" cornerTopRight="1" cornerBottomLeft="1" cornerBottomRight="1" borderstyle="Solid" description="" roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSmallText="">
+			<objects at="wsw">Golden Well Hotel|Safe|(*Jade*)|Box of matches</objects>
+		</room>
+		<line id="26" startText="D" endText="U">
+			<dock index="0" id="1" port="s" />
+			<dock index="1" id="4" port="n" />
+		</line>
+		<line id="27" style="dashed" startText="U" endText="D">
+			<dock index="0" id="2" port="e" />
+			<dock index="1" id="3" port="w" />
+		</line>
+		<line id="28">
+			<dock index="0" id="3" port="e" />
+			<dock index="1" id="4" port="w" />
+		</line>
+		<line id="29">
+			<dock index="0" id="4" port="s" />
+			<dock index="1" id="6" port="n" />
+		</line>
+		<line id="30" style="dashed">
+			<dock index="0" id="6" port="e" />
+			<dock index="1" id="7" port="w" />
+		</line>
+		<room id="92" name="Hangman's Gulch (John H Doolittle, Garry Francis)" subtitle="" x="-520" y="-280" w="580" h="40" region="NoRegion" handDrawn="no" allcornersequal="no" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="1" cornerTopRight="1" cornerBottomLeft="1" cornerBottomRight="1" borderstyle="None" description="" roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSmallText="">
+			<objects at="wsw" />
+		</room>
+		<room id="62" name="Last Chance Saloon" subtitle="" x="-280" y="-80" w="80" h="40" region="Treasure" handDrawn="no" allcornersequal="no" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="1" cornerTopRight="1" cornerBottomLeft="1" cornerBottomRight="1" borderstyle="Solid" description="" roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSmallText="">
+			<objects at="wsw">Last Chance Saloon|Kettle|Sign|(Mirror)|(*Gold*)</objects>
+		</room>
+		<room id="64" name="Steep's Tea Room" subtitle="" x="-280" y="0" w="80" h="40" region="Treasure" handDrawn="no" allcornersequal="no" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="1" cornerTopRight="1" cornerBottomLeft="1" cornerBottomRight="1" borderstyle="Solid" description="" roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSmallText="">
+			<objects at="wsw">Steep's Tea Room|Stove|Sign|Chair|Unhappy Englishman|(*Emerald*)</objects>
+		</room>
+		<room id="65" name="Street" subtitle="" x="-160" y="0" w="80" h="40" region="Treasure" handDrawn="no" allcornersequal="no" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="1" cornerTopRight="1" cornerBottomLeft="1" cornerBottomRight="1" borderstyle="Solid" description="" roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSmallText="">
+			<objects at="wsw">Town|Street|Steep's Tea Room|Golden Well Hotel|(Kitten)|(*Ruby*)</objects>
+		</room>
+		<room id="67" name="Doctor's Office" subtitle="" x="-280" y="80" w="80" h="40" region="Normal" handDrawn="no" allcornersequal="no" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="1" cornerTopRight="1" cornerBottomLeft="1" cornerBottomRight="1" borderstyle="Solid" description="" roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSmallText="">
+			<objects at="wsw">Doctor's office|Magazines|Tweezers|Can of oil</objects>
+		</room>
+		<room id="68" name="Street" subtitle="" x="-160" y="80" w="80" h="40" region="Normal" handDrawn="no" allcornersequal="no" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="1" cornerTopRight="1" cornerBottomLeft="1" cornerBottomRight="1" borderstyle="Solid" description="" roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSmallText="">
+			<objects at="wsw">Town|Street|Doctor's office|Livery stable|Rock</objects>
+		</room>
+		<room id="69" name="Livery Stable" subtitle="" x="-40" y="80" w="80" h="40" region="Normal" handDrawn="no" allcornersequal="no" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="1" cornerTopRight="1" cornerBottomLeft="1" cornerBottomRight="1" borderstyle="Solid" description="" roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSmallText="">
+			<objects at="wsw">Livery stable|Shovel|Bulk hay|(Handful of hay)|Bucket|(Rope tied to bucket)</objects>
+		</room>
+		<room id="70" name="Mineshaft" subtitle="" x="-520" y="400" w="80" h="40" region="Dark" handDrawn="no" allcornersequal="no" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="1" cornerTopRight="1" cornerBottomLeft="1" cornerBottomRight="1" borderstyle="Solid" description="" roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSmallText="">
+			<objects at="wsw">Mineshaft|Timber supports</objects>
+		</room>
+		<room id="71" name="Pasture" subtitle="" x="-280" y="160" w="80" h="40" region="Normal" handDrawn="no" allcornersequal="no" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="1" cornerTopRight="1" cornerBottomLeft="1" cornerBottomRight="1" borderstyle="Solid" description="" roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSmallText="">
+			<objects at="wsw">Pasture|Cow|Bulk milk|(Milk)</objects>
+		</room>
+		<room id="72" name="Street" subtitle="" x="-160" y="160" w="80" h="40" region="Normal" handDrawn="no" allcornersequal="no" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="1" cornerTopRight="1" cornerBottomLeft="1" cornerBottomRight="1" borderstyle="Solid" description="" roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSmallText="">
+			<objects at="wsw">Town|Street|Pasture|Limping Horse Corral</objects>
+		</room>
+		<room id="73" name="Limping Horse Corral" subtitle="" x="-40" y="160" w="80" h="40" region="Normal" handDrawn="no" allcornersequal="no" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="1" cornerTopRight="1" cornerBottomLeft="1" cornerBottomRight="1" borderstyle="Solid" description="" roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSmallText="">
+			<objects at="wsw">Limping Horse Corral|Sugar cubes</objects>
+		</room>
+		<room id="76" name="Mineshaft" subtitle="" x="-520" y="480" w="80" h="40" region="Dark" handDrawn="no" allcornersequal="no" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="1" cornerTopRight="1" cornerBottomLeft="1" cornerBottomRight="1" borderstyle="Solid" description="" roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSmallText="">
+			<objects at="wsw">Mineshaft|Timber supports</objects>
+		</room>
+		<room id="77" name="Miner's Shack" subtitle="" x="-280" y="240" w="80" h="40" region="Normal" handDrawn="no" allcornersequal="no" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="1" cornerTopRight="1" cornerBottomLeft="1" cornerBottomRight="1" borderstyle="Solid" description="" roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSmallText="">
+			<objects at="wsw">Miner's shack|Trapdoor|Packet of tea leaves|Dog</objects>
+		</room>
+		<room id="78" name="Street" subtitle="" x="-160" y="240" w="80" h="40" region="Normal" handDrawn="no" allcornersequal="no" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="1" cornerTopRight="1" cornerBottomLeft="1" cornerBottomRight="1" borderstyle="Solid" description="" roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSmallText="">
+			<objects at="wsw">Town|Street|Miner's shack</objects>
+		</room>
+		<room id="79" name="Field" subtitle="" x="-40" y="240" w="80" h="40" region="Normal" handDrawn="no" allcornersequal="no" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="1" cornerTopRight="1" cornerBottomLeft="1" cornerBottomRight="1" borderstyle="Solid" description="" roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSmallText="">
+			<objects at="wsw">Field|Boulder</objects>
+		</room>
+		<room id="80" name="Top of Boulder" subtitle="" x="-40" y="320" w="80" h="40" region="Normal" handDrawn="no" allcornersequal="no" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="1" cornerTopRight="1" cornerBottomLeft="1" cornerBottomRight="1" borderstyle="Solid" description="" roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSmallText="">
+			<objects at="wsw">Field|Boulder|Map</objects>
+		</room>
+		<line id="102">
+			<dock index="0" id="4" port="e" />
+			<dock index="1" id="5" port="w" />
+		</line>
+		<line id="108">
+			<dock index="0" id="62" port="e" />
+			<dock index="1" id="6" port="w" />
+		</line>
+		<line id="113">
+			<dock index="0" id="64" port="e" />
+			<dock index="1" id="65" port="w" />
+		</line>
+		<line id="114">
+			<dock index="0" id="65" port="e" />
+			<dock index="1" id="10" port="w" />
+		</line>
+		<line id="118">
+			<dock index="0" id="67" port="e" />
+			<dock index="1" id="68" port="w" />
+		</line>
+		<line id="119">
+			<dock index="0" id="68" port="e" />
+			<dock index="1" id="69" port="w" />
+		</line>
+		<line id="133">
+			<dock index="0" id="6" port="s" />
+			<dock index="1" id="65" port="n" />
+		</line>
+		<line id="134">
+			<dock index="0" id="65" port="s" />
+			<dock index="1" id="68" port="n" />
+		</line>
+		<line id="135">
+			<dock index="0" id="68" port="s" />
+			<dock index="1" id="72" port="n" />
+		</line>
+		<line id="180">
+			<dock index="0" id="72" port="e" />
+			<dock index="1" id="73" port="w" />
+		</line>
+		<line id="185">
+			<dock index="0" id="78" port="e" />
+			<dock index="1" id="79" port="w" />
+		</line>
+		<line id="186" style="dashed" startText="U" endText="D">
+			<dock index="0" id="79" port="s" />
+			<dock index="1" id="80" port="n" />
+		</line>
+		<line id="188">
+			<dock index="0" id="70" port="s" />
+			<dock index="1" id="76" port="n" />
+		</line>
+		<line id="190">
+			<dock index="0" id="72" port="s" />
+			<dock index="1" id="78" port="n" />
+		</line>
+		<line id="192">
+			<dock index="0" id="71" port="e" />
+			<dock index="1" id="72" port="w" />
+		</line>
+		<line id="194" style="dashed">
+			<dock index="0" id="77" port="e" />
+			<dock index="1" id="78" port="w" />
+		</line>
+		<room id="207" name="Mineshaft" subtitle="" x="-520" y="560" w="80" h="40" region="Dark" handDrawn="no" allcornersequal="no" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="1" cornerTopRight="1" cornerBottomLeft="1" cornerBottomRight="1" borderstyle="Solid" description="" roomFill="" secondFill="#80FF80" secondFillLocation="BottomRight" roomBorder="" roomLargeText="" roomSmallText="">
+			<objects at="wsw">Mineshaft|Timber supports|(Diamonds)</objects>
+		</room>
+		<room id="208" name="Cellar" subtitle="" x="-280" y="320" w="80" h="40" region="Dark" handDrawn="no" allcornersequal="no" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="1" cornerTopRight="1" cornerBottomLeft="1" cornerBottomRight="1" borderstyle="Solid" description="" roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSmallText="">
+			<objects at="wsw">Cellar|Trapdoor|Lantern</objects>
+		</room>
+		<room id="209" name="Range" subtitle="" x="-160" y="320" w="80" h="40" region="Treasure" handDrawn="no" allcornersequal="no" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="1" cornerTopRight="1" cornerBottomLeft="1" cornerBottomRight="1" borderstyle="Solid" description="" roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSmallText="">
+			<objects at="wsw">Range|(Limping horse)|(Hoof)|(Thorn)|(*Turquoise*)</objects>
+		</room>
+		<room id="211" name="Mineshaft" subtitle="" x="-400" y="400" w="80" h="40" region="Dark" handDrawn="no" allcornersequal="no" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="1" cornerTopRight="1" cornerBottomLeft="1" cornerBottomRight="1" borderstyle="Solid" description="" roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSmallText="">
+			<objects at="wsw">Mineshaft|Timber supports</objects>
+		</room>
+		<room id="212" name="Mineshaft" subtitle="" x="-280" y="400" w="80" h="40" region="Dark" handDrawn="no" allcornersequal="no" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="1" cornerTopRight="1" cornerBottomLeft="1" cornerBottomRight="1" borderstyle="Solid" description="" roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSmallText="">
+			<objects at="wsw">Mineshaft|Timber supports</objects>
+		</room>
+		<room id="213" name="Mineshaft" subtitle="" x="-160" y="400" w="80" h="40" region="Dark" handDrawn="no" allcornersequal="no" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="1" cornerTopRight="1" cornerBottomLeft="1" cornerBottomRight="1" borderstyle="Solid" description="" roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSmallText="">
+			<objects at="wsw">Mineshaft|Timber supports</objects>
+		</room>
+		<room id="217" name="Mineshaft" subtitle="" x="-400" y="480" w="80" h="40" region="Dark" handDrawn="no" allcornersequal="no" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="1" cornerTopRight="1" cornerBottomLeft="1" cornerBottomRight="1" borderstyle="Solid" description="" roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSmallText="">
+			<objects at="wsw">Mineshaft|Timber supports</objects>
+		</room>
+		<room id="218" name="Mineshaft" subtitle="" x="-280" y="480" w="80" h="40" region="Dark" handDrawn="no" allcornersequal="no" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="1" cornerTopRight="1" cornerBottomLeft="1" cornerBottomRight="1" borderstyle="Solid" description="" roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSmallText="">
+			<objects at="wsw">Mineshaft|Timber supports</objects>
+		</room>
+		<room id="219" name="Mineshaft" subtitle="" x="-160" y="480" w="80" h="40" region="Dark" handDrawn="no" allcornersequal="no" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="1" cornerTopRight="1" cornerBottomLeft="1" cornerBottomRight="1" borderstyle="Solid" description="" roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSmallText="">
+			<objects at="wsw">Mineshaft|Timber supports</objects>
+		</room>
+		<line id="225">
+			<dock index="0" id="76" port="s" />
+			<dock index="1" id="207" port="n" />
+		</line>
+		<line id="226" style="dashed" startText="D" endText="U">
+			<dock index="0" id="77" port="s" />
+			<dock index="1" id="208" port="n" />
+		</line>
+		<line id="228">
+			<dock index="0" id="78" port="s" />
+			<dock index="1" id="209" port="n" />
+		</line>
+		<line id="230">
+			<dock index="0" id="211" port="s" />
+			<dock index="1" id="217" port="n" />
+		</line>
+		<line id="233" startText="D" endText="U">
+			<dock index="0" id="208" port="s" />
+			<dock index="1" id="212" port="n" />
+		</line>
+		<line id="234">
+			<dock index="0" id="212" port="s" />
+			<dock index="1" id="218" port="n" />
+		</line>
+		<line id="236">
+			<dock index="0" id="213" port="s" />
+			<dock index="1" id="219" port="n" />
+		</line>
+		<line id="252">
+			<dock index="0" id="211" port="e" />
+			<dock index="1" id="212" port="w" />
+		</line>
+		<line id="256">
+			<dock index="0" id="212" port="e" />
+			<dock index="1" id="213" port="w" />
+		</line>
+		<line id="265">
+			<dock index="0" id="217" port="e" />
+			<dock index="1" id="218" port="w" />
+		</line>
+		<line id="266">
+			<dock index="0" id="218" port="e" />
+			<dock index="1" id="219" port="w" />
+		</line>
+		<room id="346" name="Mineshaft" subtitle="" x="-280" y="560" w="80" h="40" region="Dark" handDrawn="no" allcornersequal="no" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="1" cornerTopRight="1" cornerBottomLeft="1" cornerBottomRight="1" borderstyle="Solid" description="" roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSmallText="">
+			<objects at="wsw">Mineshaft|Timber supports</objects>
+		</room>
+		<line id="370">
+			<dock index="0" id="218" port="s" />
+			<dock index="1" id="346" port="n" />
+		</line>
+		<room id="231" name="Copyright © Garry Francis 2024" subtitle="" x="-120" y="560" w="180" h="40" region="NoRegion" handDrawn="no" allcornersequal="no" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="1" cornerTopRight="1" cornerBottomLeft="1" cornerBottomRight="1" borderstyle="None" description="" roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSmallText="">
+			<objects at="wsw" />
+		</room>
+		<room id="232" name="Legend" subtitle="" x="-520" y="-240" w="80" h="40" region="NoRegion" handDrawn="no" allcornersequal="no" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="0" cornerTopRight="0" cornerBottomLeft="0" cornerBottomRight="0" borderstyle="None" description="" roomFill="#FFFFFF" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSmallText="">
+			<objects at="wsw" />
+		</room>
+		<room id="240" name="Start Room" subtitle="" x="-520" y="-200" w="80" h="40" region="Normal" handDrawn="no" allcornersequal="no" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="0" cornerTopRight="0" cornerBottomLeft="0" cornerBottomRight="0" borderstyle="Solid" isDark="yes" description="" roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSmallText="">
+			<objects at="wsw" />
+		</room>
+		<room id="241" name="Normal Room" subtitle="" x="-520" y="-140" w="80" h="40" region="Normal" handDrawn="no" allcornersequal="no" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="0" cornerTopRight="0" cornerBottomLeft="0" cornerBottomRight="0" borderstyle="Solid" description="" roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSmallText="">
+			<objects at="wsw" />
+		</room>
+		<room id="286" name="Dark Room" subtitle="" x="-520" y="-20" w="80" h="40" region="Dark" handDrawn="no" allcornersequal="no" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="0" cornerTopRight="0" cornerBottomLeft="0" cornerBottomRight="0" borderstyle="Solid" description="" roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSmallText="">
+			<objects at="wsw" />
+		</room>
+		<line id="37" flow="oneWay">
+			<dock index="0" id="5" port="ene" />
+			<dock index="1" id="5" port="ese" />
+		</line>
+		<line id="8">
+			<dock index="0" id="70" port="e" />
+			<dock index="1" id="211" port="w" />
+		</line>
+		<line id="11">
+			<dock index="0" id="76" port="e" />
+			<dock index="1" id="217" port="w" />
+		</line>
+		<room id="9" name="Room with Treasure" subtitle="" x="-520" y="-80" w="80" h="40" region="Treasure" handDrawn="no" allcornersequal="yes" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="1" cornerTopRight="1" cornerBottomLeft="1" cornerBottomRight="1" borderstyle="Solid" description="" roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSmallText="">
+			<objects at="wsw" />
+		</room>
+	</map>
+	<settings>
+		<colors>
+			<canvas>White</canvas>
+			<fill>#FFFF99</fill>
+			<border>Black</border>
+			<line>Black</line>
+			<selectedLine>Gold</selectedLine>
+			<hoverLine>DarkOrange</hoverLine>
+			<largeText>Black</largeText>
+			<smallText>Black</smallText>
+			<lineText>Black</lineText>
+			<grid>#F5F5F5</grid>
+		</colors>
+		<regions>
+			<Dark Name="Dark" TextColor="Black">Silver</Dark>
+			<Dead Name="Dead" TextColor="White">Red</Dead>
+			<NoRegion Name="NoRegion" TextColor="Black">White</NoRegion>
+			<Normal Name="Normal" TextColor="Black">#FFFF80</Normal>
+			<Treasure Name="Treasure" TextColor="Black">#80FF80</Treasure>
+		</regions>
+		<fonts>
+			<room size="12">Arial</room>
+			<object size="12">Arial Narrow</object>
+			<line size="12">Arial Narrow</line>
+		</fonts>
+		<grid>
+			<snapTo>yes</snapTo>
+			<visible>yes</visible>
+			<showOrigin>yes</showOrigin>
+			<size>20</size>
+		</grid>
+		<lines>
+			<width>1</width>
+			<handDrawn>no</handDrawn>
+			<arrowSize>8</arrowSize>
+			<textOffset>4</textOffset>
+		</lines>
+		<rooms>
+			<darknessStripeSize>10</darknessStripeSize>
+			<objectListOffset>4</objectListOffset>
+			<connectionStalkLength>20</connectionStalkLength>
+			<preferredDistanceBetweenRooms>40</preferredDistanceBetweenRooms>
+			<defaultRoomName>Cave</defaultRoomName>
+		</rooms>
+		<ui>
+			<handleSize>8</handleSize>
+			<snapToElementSize>8</snapToElementSize>
+		</ui>
+		<keypadNavigation>
+			<creationModifier>control</creationModifier>
+			<unexploredModifier>alt</unexploredModifier>
+		</keypadNavigation>
+	</settings>
+</trizbort>

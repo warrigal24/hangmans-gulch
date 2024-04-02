@@ -1,0 +1,465 @@
+Hangman's Gulch - Coded Hints
+
+Read the questions in the area where you are stuck. Each question is followed by a list of numbers. Look up the numbers in the dictionary at the end. Convert the numbers to words to find a clue or solution.
+
+
+Hanging Tree
+------------
+Don't know what to do here?
+  32 136
+
+Can't reach rope?
+  44 71
+
+
+Midway up Tree
+--------------
+Can't get rope?
+  65 46
+
+
+Rattlesnake Wells
+-----------------
+Snake won't let you near well?
+  87 48
+
+Snake still won't let you near well?
+  94 124 90 83
+
+Can't get water from well?
+  87 29
+
+Can't find container?
+  103 140 115 108 95 110 55 51
+
+Still can't find container?
+  76 77 75 39
+
+Still can't get water from well?
+  76 138 116 77
+
+Still can't get water from well?
+  24 20 92
+
+Still can't get water from well?
+  100 84 4 77
+
+
+Ledge Inside Well
+-----------------
+Can't get water?
+  132 1 36 24
+
+
+Sandy Desert
+------------
+Don't know what to do here?
+  121 20 28
+
+Still don't know what to do here?
+  19 121
+
+Missing a shovel?
+  140 39
+
+
+Street
+------
+Don't know what to do here?
+  101 20 31
+
+Still don't know what to do here?
+  76 124 140 144 59
+
+Nothing else to do here?
+  104 23 131 47 103 113 8
+
+Puzzled by kitten?
+  52 81
+
+Still puzzled by kitten?
+  68 54 4 81
+
+
+Last Chance Saloon
+------------------
+Don't know what to do here?
+  32 136
+
+Can't solve riddle?
+  11 102 25 30 118 86 134
+
+Still can't solve riddle?
+  130 41
+
+Can't solve second riddle?
+  60 97 70 120 56 5 8 17
+
+Still can't solve second riddle?
+  45 113 53
+
+Still can't solve second riddle?
+  130 88
+
+
+Hardrock Jail
+-------------
+Can't enter jail?
+  141 85 93 129 73 112 13 105
+
+Can't find key to jail?
+  141 106 82
+
+Still can't find key to jail?
+  140 145
+
+Still can't enter jail?
+  64 74 116 73
+
+
+Steep's Tea Room
+----------------
+Don't know what to do here?
+  37 4 89
+
+Still don't know what to do here?
+  32 136
+
+Still don't know what to do here?
+  87 69 140 26 8
+
+
+Golden Well Hotel
+-----------------
+Can't open safe?
+  52 46
+
+Still can't open safe?
+  133 46 116 133 143
+
+Can't find oil?
+  140 21
+
+
+Doctor's Office
+---------------
+Don't know what to do here?
+  76 22
+
+
+Livery Stable
+-------------
+Don't know what to do here?
+  19 46 140 9 46 140 127 46
+
+
+Pasture
+-------
+Can't milk cow?
+  87 38 119
+
+Still can't milk cow?
+  68 111 4 38
+
+Still can't milk cow?
+  76 54 116 77
+
+
+Limping Horse Corral
+--------------------
+Don't know what to do here?
+  68 46 4 66
+
+
+Miner's Shack
+-------------
+Dog won't let you in?
+  57 20 125 35
+
+Dog still won't let you in?
+  107 57 116 15 80
+
+Dog still won't let you in?
+  76 83
+
+Dead end?
+  98 14
+
+
+Field
+-----
+Can't climb onto boulder?
+  76 123
+
+Still can't climb onto boulder?
+  76 16 75 8 17
+
+Still can't climb onto boulder?
+  79 16 140 146 34 46
+
+
+Top of Boulder
+--------------
+Dont't know what to do with map?
+  32 46
+
+Still dont't know what to do with map?
+  7 85 25 19 134
+
+Still dont't know what to do with map?
+  42 46 5 49 99
+
+Still dont't know what to do with map?
+  42 46 5 62
+
+
+Range
+-----
+Nothing to do here?
+  104 23 131 47 103 113 8
+
+Can't get close to limping horse?
+  46 126 12 137
+
+Still can't get close to limping horse?
+  68 72
+
+Can't help limping horse?
+  52 18
+
+Still can't help limping horse?
+  76 43 116 6
+
+
+Cellar
+------
+Can't light lantern?
+  140 122
+
+Can't find fuel for lantern?
+  133 20 2
+
+Still can't light lantern?
+  127 50 116 133 140 58 46 116 122
+
+
+Mineshaft
+---------
+Fumbling around in the dark?
+  87 58 142
+
+Don't know what to do here?
+  62 20 109 96
+
+Still don't know what to do here?
+  87 117 140 32 46 140 139 46 140 19
+
+
+Ingredients for cup of tea
+--------------------------
+Missing kettle?
+  140 135
+
+Missing water?
+  140 24
+
+Missing tea leaves?
+  140 114
+
+Missing jug?
+  140 8 17
+
+Missing milk?
+  140 61
+
+Missing sugar?
+  140 67
+
+Missing cup?
+  140 3
+
+Missing saucer?
+  46 10 128
+
+Missing matches?
+  140 63
+
+Missing something flammable?
+  140 21
+
+
+Treasures
+---------
+Missing gold?
+  140 135
+
+Missing silver?
+  140 24
+
+Missing jade?
+  140 91
+
+Missing pearl?
+  147 78
+
+Missing diamonds?
+  139 117 5 62
+
+Missing emerald?
+  26 8 5 8 17
+
+Missing ruby?
+  81 20 73
+
+Missing turquoise?
+  27 33
+
+============================================================
+
+  1. AS
+  2. FLAMMABLE
+  3. JAIL
+  4. TO
+  5. IN
+  6. TWEEZERS
+  7. WHERE
+  8. TEA
+  9. FEED
+ 10. FLEW
+ 11. HOW
+ 12. SWEET
+ 13. LEAVING
+ 14. TRAPDOOR
+ 15. SOMETHING
+ 16. CHAIR
+ 17. ROOM
+ 18. HOOF
+ 19. DIG
+ 20. IS
+ 21. DOCTOR
+ 22. ALL
+ 23. BACK
+ 24. WELL
+ 25. YOU
+ 26. MAKE
+ 27. HELP
+ 28. SOFT
+ 29. CONTAINER
+ 30. CHECK
+ 31. LONG
+ 32. READ
+ 33. HORSE
+ 34. ON
+ 35. CAT
+ 36. OUTSIDE
+ 37. TALK
+ 38. COW
+ 39. STABLE
+ 40. ,
+ 41. MIRROR
+ 42. USE
+ 43. THORN
+ 44. CLIMB
+ 45. SPECIALITY
+ 46. IT
+ 47. MAKING
+ 48. WEAPON
+ 49. DARK
+ 50. LANTERN
+ 51. SMALL
+ 52. EXAMINE
+ 53. BARISTA
+ 54. MILK
+ 55. TOO
+ 56. FOUND
+ 57. DOG
+ 58. LIGHT
+ 59. BUILDINGS
+ 60. POPULAR
+ 61. PASTURE
+ 62. MINE
+ 63. HOTEL
+ 64. UNLOCK
+ 65. UNTIE
+ 66. NAMESAKE
+ 67. CORRAL
+ 68. GIVE
+ 69. INGREDIENTS
+ 70. DRINK
+ 71. TREE
+ 72. SUGAR
+ 73. KEY
+ 74. DOOR
+ 75. FROM
+ 76. GET
+ 77. BUCKET
+ 78. GAME
+ 79. DROP
+ 80. SCARY
+ 81. KITTEN
+ 82. EAST
+ 83. SNAKE
+ 84. ROPE
+ 85. MIGHT
+ 86. APPEARANCE
+ 87. FIND
+ 88. COFFEE
+ 89. ENGLISHMAN
+ 90. AT
+ 91. SAFE
+ 92. DEEP
+ 93. HAVE
+ 94. THROW
+ 95. KETTLE
+ 96. MINING
+ 97. HOT
+ 98. OPEN
+ 99. PLACE
+100. TIE
+101. STREET
+102. DO
+103. CUP
+104. COME
+105. TOWN
+106. HEADED
+107. FRIGHTEN
+108. AND
+109. FOR
+110. ARE
+111. HAY
+112. WHEN
+113. OF
+114. SHACK
+115. JUG
+116. WITH
+117. MAP
+118. YOUR
+119. FOOD
+120. NOT
+121. SAND
+122. MATCHES
+123. HIGHER
+124. ROCK
+125. SCAREDY
+126. HAS
+127. FILL
+128. AWAY
+129. DROPPED
+130. SAY
+131. AFTER
+132. SAME
+133. OIL
+134. ?
+135. SALOON
+136. SIGN
+137. TOOTH
+138. WATER
+139. FOLLOW
+140. TRY
+141. JAILER
+142. SOURCE
+143. CAN
+144. ENTER
+145. DESERT
+146. STAND
+147. WRONG

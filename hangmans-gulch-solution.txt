@@ -1,0 +1,177 @@
+Hangman's Gulch
+By John H Doolittle, Garry Francis
+For Z-code interpreters
+
+Solution by Garry Francis
+----------------------------------------
+This is a minimal solution. You'll need to EXAMINE lots of things for this solution to make sense. Some optional (but significant) commands are shown in parentheses. These can be omitted once you know what to do.
+
+Scores are shown in parentheses as +A=B, where A is points earned and B is cumulative points earned.
+
+(X ROPE) (it's tied to the branch)
+(GET IT) (you can't reach it)
+(X SIGN) (try reading it)
+(READ IT) (drop *treasures* here)
+U
+(GET ROPE) (you'll have to untie it first)
+UNTIE ROPE (it falls to the ground below)
+D
+GET ROPE
+S
+(OPEN DOOR) (it's locked)
+W
+GET KETTLE
+(X SIGN) (try reading it)
+READ SIGN (it gives you a riddle, last part is backwards)
+SAY MIRROR (a mirror appears on wall opposite sign)
+X MIRROR (you can now read 2nd part of sign, it's another riddle)
+SAY COFFEE (coffee appears, prospector takes it and leaves gold as payment)
+(L) (you see some gold)
+GET GOLD
+E
+S
+S
+GET ROCK
+E
+GET SHOVEL
+GET BUCKET
+TIE ROPE TO BUCKET
+GET HAY
+W
+N
+N
+N
+DROP GOLD (+10=10)
+W
+THROW ROCK AT SNAKE (you kill it)
+GET SNAKE
+D
+GET SILVER
+U
+GET WATER WITH BUCKET (with rope tied to bucket)
+E
+DROP SILVER (+10=20)
+E
+DIG SAND WITH SHOVEL (you find something)
+(L) (it's a key)
+GET KEY
+W
+S
+UNLOCK DOOR WITH KEY
+OPEN IT
+DROP KEY
+E
+GET CUP
+W
+S
+W
+(X SIGN) (try reading it)
+READ SIGN (gives instructions for making a cup of tea)
+DROP CUP
+DROP KETTLE
+POUR WATER INTO KETTLE
+GET CHAIR
+E
+E
+GET MATCHES
+W
+S
+W
+GET MAGAZINES
+GET TWEEZERS
+GET CAN
+E
+S
+E
+GET SUGAR CUBES
+W
+W
+GIVE HAY TO COW (she is now content)
+MILK COW WITH BUCKET (you partially fill the bucket with fresh creamy milk)
+E
+S
+E
+(U) (you need something to stand on)
+DROP CHAIR
+STAND ON IT
+U
+(X MAP) (it looks like a treasure map, try reading it)
+READ MAP (it says DOWN WEST WEST SOUTH SOUTH DIG)
+D
+W
+W (barking dog backs off when it sees dead snake)
+GET TEA LEAVES
+OPEN TRAPDOOR
+D
+GET LANTERN
+(X IT) (it's not lit and empty)
+FILL IT WITH OIL
+LIGHT IT WITH MATCHES (it gives off an eerie yellow glow, now follow the map)
+D
+W
+W
+S
+S
+DIG (you found something)
+(L) (it's some diamonds)
+DROP SHOVEL
+GET DIAMONDS
+N
+N
+E
+E
+U
+U
+E
+DROP SNAKE
+DROP LANTERN
+N
+N
+N
+W
+POUR MILK INTO JUG
+MAKE TEA (Englishman drinks tea, leaves a tip and leaves) (+30=50)
+(L) (he left an emerald)
+DROP MATCHES
+GET EMERALD
+GET JUG
+E (there's now a kitten here)
+(X KITTEN) (she looks hungry)
+GIVE MILK TO KITTEN (she laps it up, returns with pack rat who drops something)
+(L) (it was a ruby)
+GET RUBY
+E
+(X SAFE) (hinges are rusty)
+(OPEN SAFE) (hinges are rusty)
+OIL SAFE WITH OIL CAN (you can now open it)
+OPEN IT (it contains some jade)
+DROP CAN
+GET JADE
+W
+S
+S
+S
+S (there's now a limping horse here)
+(X HORSE) (there's something stuck in her hoof)
+(X HOOF) (you can't get close enough to see what it is, befriend her)
+GIVE SUGAR CUBES TO HORSE (she eats them out of your hand, could also drop them)
+(X HOOF) (there's a thorn in her hoof)
+(X THORN) (it looks like a cactus thorn)
+GET THORN WITH TWEEZERS (horse shakes something from her mane and canters away)
+(L) (it's turquoise)
+GET TURQUOISE
+N
+N
+(E) (the horse is here now)
+(MOUNT HORSE) (not yet, wait until you've collected all the treasures)
+(W)
+N
+N
+N
+N
+DROP DIAMONDS (+10=60)
+DROP EMERALD (+10=70)
+DROP RUBY (+10=80)
+DROP JADE (+10=90)
+DROP TURQUOISE (you collect all treasures, get horse and ride south) (+10=100)
+***THE END***

@@ -1,0 +1,3773 @@
+!% -~S
+!% $OMIT_UNUSED_ROUTINES=1
+!% $OMIT_SYMBOL_TABLE=1
+!% $ZCODE_LESS_DICT_DATA=1
+!% $MAX_ABBREVS=96
+!========================================
+! Hangman's Gulch
+! Copyright © 2024 Garry Francis
+!========================================
+!Constant DEBUG;
+
+Abbreviate " continues to the ";            !    11x, saved   158
+Abbreviate " John H Doolittle";             !     4x, saved    51
+Abbreviate " is intended for ";             !    15x, saved   207
+Abbreviate "Steep's Tea Room";              !     5x, saved    69
+Abbreviate "You'll have to ";               !    16x, saved   222
+Abbreviate "livery stable";                 !     7x, saved    62
+Abbreviate " cup of tea";                   !    18x, saved   150
+Abbreviate "sugar cubes";                   !     7x, saved    51
+Abbreviate "tea leaves";                    !     8x, saved    52
+Abbreviate " something";                    !    29x, saved   220
+Abbreviate "Englishman";                    !    13x, saved   105
+Abbreviate "ou'll need";                    !    18x, saved   150
+Abbreviate "You can't ";                    !    53x, saved   518
+Abbreviate "trapdoor";                      !    11x, saved    57
+Abbreviate " you're ";                      !    11x, saved    68
+Abbreviate "There's ";                      !    28x, saved   212
+Abbreviate " in the ";                      !    40x, saved   231
+Abbreviate " of the ";                      !    31x, saved   177
+Abbreviate "ing the ";                      !    33x, saved   189
+Abbreviate "ineshaft";                      !    14x, saved    75
+Abbreviate "already ";                      !    21x, saved   117
+Abbreviate "You can ";                      !    13x, saved    82
+Abbreviate "treasure";                      !     9x, saved    45
+Abbreviate " to the ";                      !    57x, saved   333
+Abbreviate "nothing ";                      !    22x, saved   123
+Abbreviate "lantern";                       !    18x, saved    81
+Abbreviate "It's a ";                       !    31x, saved   208
+Abbreviate " first.";                       !    17x, saved    93
+Abbreviate " looks ";                       !    22x, saved   101
+Abbreviate "bucket";                        !    23x, saved    86
+Abbreviate "You're";                        !    32x, saved   183
+Abbreviate " to be";                        !    14x, saved    50
+Abbreviate " your ";                        !    32x, saved   122
+Abbreviate ". You ";                        !    23x, saved   129
+Abbreviate "water";                         !    33x, saved    93
+Abbreviate " that";                         !    74x, saved   216
+Abbreviate "ould ";                         !    33x, saved    93
+Abbreviate ", but";                         !    35x, saved   134
+Abbreviate "thing";                         !    37x, saved   105
+Abbreviate " and ";                         !   110x, saved   324
+Abbreviate "It's ";                         !    33x, saved   156
+Abbreviate " with";                         !    56x, saved   162
+Abbreviate " you ";                         !   121x, saved   357
+Abbreviate "snake";                         !    29x, saved    81
+Abbreviate " from";                         !    28x, saved    78
+Abbreviate " the ";                         !   293x, saved   873
+Abbreviate "south";                         !    20x, saved    54
+Abbreviate "north";                         !    17x, saved    45
+Abbreviate "This ";                         !    13x, saved    46
+Abbreviate "empty";                         !    18x, saved    48
+Abbreviate " down";                         !    21x, saved    57
+Abbreviate "horse";                         !    23x, saved    63
+Abbreviate " what";                         !    19x, saved    51
+Abbreviate "round";                         !    24x, saved    66
+Abbreviate "west.";                         !    19x, saved    70
+Abbreviate "have ";                         !    31x, saved    87
+Abbreviate " for";                          !    41x, saved    76
+Abbreviate "You ";                          !   103x, saved   303
+Abbreviate "ing ";                          !   124x, saved   242
+Abbreviate " you";                          !    48x, saved    90
+Abbreviate " to ";                          !   141x, saved   276
+Abbreviate "The ";                          !   107x, saved   315
+Abbreviate "here";                          !    75x, saved   144
+Abbreviate ".^* ";                          !    28x, saved   187
+Abbreviate "n't ";                          !    58x, saved   168
+Abbreviate " of ";                          !    68x, saved   130
+Abbreviate " any";                          !    32x, saved    58
+Abbreviate "tree";                          !    38x, saved    70
+Abbreviate "tion";                          !    32x, saved    58
+Abbreviate " is ";                          !    59x, saved   112
+Abbreviate "milk";                          !    36x, saved    66
+Abbreviate "ight";                          !    29x, saved    52
+Abbreviate "not ";                          !    37x, saved    68
+Abbreviate "town";                          !    34x, saved    62
+Abbreviate "ing";                           !    64x, saved    61
+Abbreviate " it";                           !    95x, saved    92
+Abbreviate "the";                           !    53x, saved    50
+Abbreviate "'s ";                           !    86x, saved   166
+Abbreviate "ope";                           !    46x, saved    43
+Abbreviate "ell";                           !    64x, saved    61
+Abbreviate "ear";                           !    49x, saved    46
+Abbreviate "ine";                           !    47x, saved    44
+Abbreviate ".^^";                           !    21x, saved    78
+Abbreviate " a ";                           !   100x, saved    97
+Abbreviate "ead";                           !    49x, saved    46
+Abbreviate "and";                           !    70x, saved    67
+Abbreviate "ack";                           !    50x, saved    47
+Abbreviate "ly ";                           !    59x, saved    56
+Abbreviate "ed.";                           !    31x, saved    56
+Abbreviate "ver";                           !    61x, saved    58
+Abbreviate " in";                           !    97x, saved    94
+Abbreviate " on";                           !    48x, saved    45
+Abbreviate ". ";                            !   165x, saved   162
+Abbreviate "e.";                            !    54x, saved    51
+Abbreviate ", ";                            !   156x, saved   153
+Abbreviate "*";                             !    25x, saved    44
+
+Constant Story "Hangman's Gulch";
+#Ifv5;
+Zcharacter table + '@{A9}'; !Add copyright symbol
+Constant Headline "^Copyright @{A9} 2024 Garry Francis^Based on 'Hangtown' by John H Doolittle^https://drdooriddle.itch.io/^Type ABOUT for further info and credits.^^";
+#Ifnot;
+Constant Headline "^Copyright (c) 2024 Garry Francis^Based on 'Hangtown' by John H Doolittle^https://drdooriddle.itch.io/^Type ABOUT for further info and credits.^^";
+#Endif;
+
+Array UUID_ARRAY string "UUID://ac7a0c80-c5a3-444f-8b1b-614b31c5493f//";
+#Ifdef UUID_ARRAY;
+#Endif;
+
+Release 1;
+Serial "240319";
+
+!Inform 6 constants
+Constant AMUSING_PROVIDED;
+Constant DEATH_MENTION_UNDO;
+Constant MAX_CARRIED = 10;
+Constant MAX_SCORE = 100;
+
+!PunyInform constants
+Constant CUSTOM_ABBREVIATIONS;
+Constant OPTIONAL_EXTENDED_METAVERBS;
+Constant OPTIONAL_EXTENDED_VERBSET;
+Constant OPTIONAL_FULL_DIRECTIONS;
+#Ifv5;
+Constant OPTIONAL_PROVIDE_UNDO;
+#Endif;
+Constant RUNTIME_ERRORS 0;!0 for release, 2 for debug
+
+!PunyInform static messages
+Constant MSG_ATTACK_DEFAULT "You had better curb your violence or a vigilante mob may appear and hang you from the hanging tree.";
+Constant MSG_BURN_DEFAULT "Are you a pyromaniac or something?";
+Constant MSG_JUMP "Have you got ants in your pants?";
+Constant MSG_PARSER_NO_INPUT "You need to enter a command.";
+Constant MSG_PARSER_UNKNOWN_VERB "That's not a verb I recognise.";
+Constant MSG_PRAY_DEFAULT "You pray that you can find enough treasures to pay for your trip home.";
+Constant MSG_SING_DEFAULT "~Oh, give me a home, where the buffalo roam,^Where the deer and the antelope play,^Where seldom is heard, a discouraging word,^And the skies are not cloudy all day.~";
+Constant MSG_SHOUT_DEFAULT "~Yeehaw!~";
+Constant MSG_SORRY_DEFAULT "Oh, don't apologise.";
+Constant MSG_STRONG_DEFAULT "Wash your mouth out with soap and water!";
+Constant MSG_TAKE_STATIC "It ain't goin' anywhere.";
+Constant MSG_THINK_DEFAULT "You can only think of your sweetheart back home. Prospecting for gold was a big, big mistake.";
+
+!PunyInform dynamic messages
+Constant MSG_CLOSE_NOT_OPEN 1000;
+Constant MSG_LOCK_ALREADY_LOCKED 1001;
+Constant MSG_LOCK_CLOSE_FIRST 1002;
+Constant MSG_LOCK_KEY_DOESNT_FIT 1003;
+Constant MSG_UNLOCK_ALREADY_UNLOCKED 1004;
+Constant MSG_UNLOCK_KEY_DOESNT_FIT 1005;
+
+Constant MSG_DIG_NO_USE 1006;
+Constant MSG_EXAMINE_DARK 1007;
+Constant MSG_SEARCH_DARK 1008;
+Constant MSG_SMELL_DEFAULT 1009;
+
+!Game-specific constants
+Constant AN "an";
+Constant SOME "some";
+Constant ATTACHED_TO_WALL "It's attached to the wall.";
+Constant CANT_CLIMB_ANY_HIGHER "You can't climb any higher.";
+Constant DEAD_END_DESCRIPTION "This is a dead end. The only exit is to the north.";
+Constant EAST_OR_WEST "Which direction? East or west?";
+Constant GET_TREASURE "That treasure ain't gonna pick itself up.";
+Constant GET_WATER "A well usually contains water. Try getting it.";
+Constant GET_WATER_WITH_BUCKET "Get the water with the bucket.";
+Constant ILL_LIGHT_IT_FOR_YOU "If you want to light something, just tell me and I'll take a match out of the box and light it for you.";
+Constant HORSE_EDGES_CLOSER "Despite the obvious pain in her hoof, the horse edges closer to you and eats the sugar cubes ";
+Constant MADE_A_FRIEND ". I think you've made a friend.";
+Constant MINESHAFT_DESCRIPTION "You're in a dark mineshaft. ";
+Constant PTEW "~Ptew!~";
+Constant READ_SIGN "Read the sign.";
+Constant ROPE_LOOKS_USEFUL "That rope looks useful.";
+Constant TIE_ROPE_TO_BUCKET "Try tying a rope to the bucket.";
+Constant TOO_DARK_TO_READ "You can't read anything in the dark.";
+Constant TOO_FAR_ON_FOOT "It's too far to travel by foot. You'll need a horse.";
+Constant TRY_SALOON_OR_HOTEL "~Don't ask me where it is. You could try the saloon or the hotel.~";
+Constant UNTIE_ROPE "Untie the rope.";
+Constant YOU_TELL_ME "~You're the prospector. You tell me where to find it.~";
+
+!Replaced actions
+Replace GiveSub;
+Replace GoSub;
+Replace LockSub;
+Replace UnlockSub;
+
+Include "globals.h";
+
+!Game-specific variables
+Global dangerous 0;
+
+!========================================
+! Entry point routines
+!========================================
+[ Amusing;
+  "^Have you tried:^* Examining yourself.^* Examining everything in every room, including scenery and the rooms themselves.^* Using verbs like ATTACK, BURN, JUMP, LISTEN, PRAY, SING, SHOUT, SMELL and THINK.^* Using the magic word XYZZY.^* Climbing the rope.^* Jumping or going any direction other than down when you're in the tree.^* Taking the live snake.^* Attacking the snake with the shovel.^* Digging the sand without the shovel.^* Breaking the mirror.^* Talking to the Englishman and the animals.^* Asking the Englishman about HIMSELF, ME, TEA, TREASURES, various ingredients and so on.^* Attacking the Englishman.^* Drinking the milk or water.^* Drinking, getting or examining the milk before milking the cow.^* Eating the sugar cubes.^* Reading the magazines.^* Hanging around the street after trying to enter the shack without the snake.^* Reading the tea leaves.^* Patting the dog.^* Shaking the can of oil.^* Shaking the lantern before and after filling it, and after it's lit.^* Closing the trapdoor when you're in the cellar without the lit lantern.^* Wandering around in the dark (save the game first).^* Examining, searching or reading in the dark.^* Pouring yourself a cup of tea after the Englishman leaves.^* Riding the horse.^* GET or DROP TREASURES, rather than doing it one at a time.^* Doing things a second time.";
+];
+
+[ DarkToDark;
+  dangerous++;
+  if (dangerous == 6)
+  {
+    deadflag = 1;
+    "You banged your head on something and knocked yourself senseless. There's no one to come to your aid. It serves you right, I told you it was dangerous to move about in the dark!";
+  }
+  "It's dangerous to move about in the dark.^";
+];
+
+[ InScope person i;
+  if (person == player && location == thedark)
+    objectloop (i in parent(player))
+      if (i has moved)
+        PlaceInScope(i);
+  rfalse;
+];
+
+[ LibraryMessages p_msg p_arg_1 p_arg_2;
+  switch (p_msg)
+  {
+    MSG_CLOSE_NOT_OPEN:
+      print_ret (CTheyreOrIts)noun, " already closed.";
+    MSG_LOCK_ALREADY_LOCKED:
+      print_ret (CTheyreOrIts)noun, " already locked.";
+    MSG_LOCK_CLOSE_FIRST:
+      "You'll have to close ", (ItOrThem)noun, " first.";
+    MSG_LOCK_KEY_DOESNT_FIT:
+      print_ret (The)second, " ", (DoesntOrDont)second, " fit the lock.";
+    MSG_UNLOCK_ALREADY_UNLOCKED:
+      print_ret (CTheyreOrIts)noun, " already unlocked.";
+    MSG_UNLOCK_KEY_DOESNT_FIT:
+      print_ret (The)second, " ", (DoesntOrDont)second, " fit the lock.";
+    MSG_DIG_NO_USE:
+      if (location == thedark)
+        "It's too dark to see where you're digging.";
+      "The ground here is too hard for digging.";
+    MSG_SEARCH_DARK:
+      "You can't see anything in the dark.";
+    MSG_SEARCH_DARK:
+      "You can't find anything in the dark.";
+    MSG_SMELL_DEFAULT:
+      if (location has light)
+        "You can only smell the dry, desert air.";
+      else
+        "It smells damp and musty.";
+  }
+  p_arg_1 = p_arg_2;
+];
+
+Include "puny.h";
+
+!========================================
+! Initialisation
+!========================================
+[ Initialise;
+  location = room01;
+  lookmode = 2;
+  no_implicit_actions = true;
+  player.description = "You're a grizzled old gold prospector who's down on his luck. Your mates call you Dusty, because they reckon that's all you ever find. You're wearing a sweat-stained red and black check shirt, dirty overalls, heavy miner's boots and a broad-brimmed hat to protect you from the sun.";
+  "On 24 January 1848, James Marshall discovered gold at Sutter's Mill, Coloma. When news spread, thousands flocked to the area and the great Californian gold rush began.^^Mining camps popped up all over the place and some of these developed into townships. When the gold rush died down, some of these towns were abandoned just as quickly as they had appeared.^^You're a grizzled old prospector who's down on his luck. You haven't found any gold in weeks and your supplies have dwindled to practically nothing, so you decide to head to town. When you get there, you find that the town has been abandoned. What can you do?^^You can't survive without supplies and the next town is miles away. Enough is enough. You know when you're beaten. You decide to return back home, but first, you'll need to scavenge the town for *treasures* to fund the trip.^";
+];
+
+!========================================
+! Classes
+!========================================
+Class Liquid
+with
+  before
+  [;
+    Pour:
+      if (parent(self) notin player)
+      {
+        print "(first taking ", (the)parent(self), ")^";
+        move parent(self) to player;
+      }
+      if (parent(self) has container)
+        <<Empty (parent(self))>>;
+    Insert, PourT:
+      if (second == parent(self))
+        "The ", (name)self, " is already in ", (the)second, ".";
+      if (second in player)
+      {
+        print "(first dropping ", (the)second, ")^";
+        move second to location;
+      }
+      if (parent(self) notin player)
+      {
+        print "(first taking ", (the)parent(self), ")^";
+        move parent(self) to player;
+      }
+      if (second has container)
+        <<EmptyT (parent(self)) second>>;
+    Take:
+      "You can't take ", (the)noun, " out of ", (the)parent(self), ", but you could pour it out or pour it into another container.";
+  ],
+has;
+
+Class ContainerForLiquids
+with
+  invent
+  [;
+    if (inventory_stage == 2 && child(self) == 0)
+      rtrue;
+  ],
+  before
+  [;
+    Empty:
+      if (child(self) == 0)
+        print_ret (The)self, " is already empty.";
+      noun = child(self);
+      remove noun;
+      "You empty ", (the)self, " and ", (the)noun, " soaks into the ground.";
+    EmptyT:
+      if (noun == second)
+        "You can't empty ", (the)self, " into itself.";
+      if (child(self) == 0)
+        print_ret (The)self, " is already empty.";
+      if (second ~= cup or jug or kettle or bucket or rope_bucket)
+        "You can't empty ", (the)self, " into ", (the)second, ".";
+      if (second == cup && child(self) ~= tea)
+        "The cup is intended for tea, not ", (name)child(self), ".";
+      if (second == jug && child(self) ~= milk)
+        "The jug is intended for milk, not ", (name)child(self), ".";
+      if (second == kettle && child(self) ~= tea or water)
+        "The kettle is intended for tea or water, not ", (name)child(self), ".";
+      if (second == bucket or rope_bucket && child(self) ~= milk or water)
+        "The bucket is intended for milk or water, not ", (name)child(self), ".";
+      if (child(second) ~= 0)
+        "You'll have to empty ", (the)second, " first.";
+      if (second in player)
+      {
+        print "(first dropping ", (the)second, ")^";
+        move second to location;
+      }
+      if (self notin player)
+      {
+        print "(first getting ", (the)self, ")^";
+        move self to player;
+      }
+      move child(self) to second;
+      "You empty ", (the)self, " into ", (the)second, ".";
+    Fill:
+      if (child(self) ~= 0)
+        print_ret (The)self, " is already full of ", (name)child(self), ".";
+      if (second == nothing)
+        "You'll have to tell me what to fill it with.";
+      if (second ofclass Liquid && TestScope(second))
+        <<EmptyT (parent(second)) self>>;
+      if (second == bulk_milk or bulk_water)
+        <<Take second self>>;
+      "You can only fill ", (the)self, " with liquids.";
+  ],
+has container open;
+
+Class OpenableContainer
+with
+  invent
+  [;
+    if (inventory_stage == 2 && (self hasnt open || child(self) == 0))
+      rtrue;
+  ],
+has container openable;
+
+!========================================
+! Room 1: Hanging Tree
+!========================================
+Object room01 "Hanging Tree"
+with
+  description "You find yourself at the hanging tree, just north of the town. The hanging tree was used by vigilante mobs to hang thieves and murderers during the height of the gold rush. You can climb up the tree, or leave the area by going south, east or west.",
+  s_to room06,
+  e_to room05,
+  w_to room03,
+  u_to room02,
+  before
+  [;
+    Hint:
+      if (hanging_tree_sign hasnt general)
+        print_ret (string)READ_SIGN;
+      if (dummy_rope in self && self hasnt general)
+      {
+        give self general;
+        print_ret (string)ROPE_LOOKS_USEFUL;
+      }
+      if (dummy_rope in self && room02 hasnt visited)
+        "What would a monkey do?";
+      if (dummy_rope in self)
+        print_ret (string)UNTIE_ROPE;
+      "Find all the treasures and drop them here.";
+  ],
+  each_turn
+  [;
+    if (score == 100)
+    {
+      deadflag = 2;
+      "^Congratulations! You've recovered all the treasures. You now have enough to fund your trip back home. You look forward to embracing your sweetheart again.^^At that moment, you suddenly realise that you don't need any gold. Everything that matters to you is in your sweetheart's sparkling eyes and sweet lips. You just hope to goodness that she'll take you back again. You'd better have a bath and get some clean clothes, first. You really stink!^^You collect all your treasures and head back to the corral, where your newly found friend is waiting for you. The two of you head south and ride out of town.";
+    }
+  ],
+has light;
+
+!----------------------------------------
+! Hanging tree (floating object)
+!----------------------------------------
+Object tree "hanging tree"
+with
+  parse_name
+  [ i;
+    while (NextWord() == 'large' or 'oak' or 'hanging' or 'tree' or 'sturdy' or 'branch')
+      i++;
+    return i;
+  ],
+  description
+  [;
+    print "It's a large oak tree with a sturdy branch that stretches out over the ground below.";
+    if (dummy_rope in location)
+      print " There's a rope tied to the branch.";
+    "";
+  ],
+  before
+  [;
+    Climb:
+      if (self in room01)
+        <<Go FAKE_U_OBJ>>;
+      else
+        <<Go FAKE_D_OBJ>>;
+    Enter:
+      if (self in room01)
+        <<Go FAKE_U_OBJ>>;
+    Exit:
+      if (self in room02)
+        <<Go FAKE_D_OBJ>>;
+  ],
+  found_in room01 room02,
+has scenery;
+
+!----------------------------------------
+! Town (floating object)
+!----------------------------------------
+Object "town"
+with
+  parse_name
+  [ nw i flag;
+    nw = NextWord();
+    while (nw == 'gold' or 'rush' or 'town')
+    {
+      i++;
+      if (nw == 'gold' && TestScope(gold))
+        flag++;
+      nw = NextWord();
+    }
+    if (i == flag)
+      return 0;
+    return i;
+  ],
+  description "It's a dry, dusty gold rush town that appears to be deserted.",
+  found_in
+  [;
+    if (location == room01 or room06 or room09 or room12 or room15 or room18)
+      rtrue;
+  ],
+has scenery;
+
+!----------------------------------------
+! Sign at hanging tree
+!----------------------------------------
+Object hanging_tree_sign "sign" room01
+with
+  parse_name
+  [ i;
+    while (NextWord() == 'large' or 'wood' or 'wooden' or 'sign' or 'billboard' or 'nail' or 'nails')
+      i++;
+    return i;
+  ],
+  description
+  [;
+    print "It's a large wooden sign that's nailed to the tree.";
+    if (self hasnt general)
+      print " Try reading it.";
+    "";
+  ],
+  before
+  [;
+    Read:
+      give self general;
+      "The sign says, 'Drop *treasures* here'.";
+    Take:
+      "It's nailed to the tree.";
+  ],
+has static;
+
+!----------------------------------------
+! Dummy rope (floating object)
+!----------------------------------------
+Object dummy_rope "rope"
+with
+  name 'rope',
+  description "It's tied to the branch.",
+  before
+  [;
+    if (action ~= ##Examine && self in room01)
+      "You can't reach it.";
+    Climb:
+      print "You climb down the rope and drop to the ground below.^^";
+      PlayerTo(room01);
+      rtrue;
+    Take:
+      "You'll have to untie it first.";
+    Tie:
+      "It's already tied to the tree.";
+    Untie:
+      give self absent;
+      MoveFloatingObjects();
+      move rope to room01;
+      "You untie the rope and it falls to the ground below.";
+  ],
+  found_in room01 room02,
+has;
+
+!----------------------------------------
+! Rope
+!----------------------------------------
+Object rope "rope"
+with
+  name 'rope',
+  description "It's a long length of rope, maybe 20 feet long. You imagine that this was once tied into a hangman's noose.",
+  before
+  [;
+    Tie:
+      if (second == nothing && TestScope(bucket))
+      {
+        print "(to the bucket)^";
+        second = bucket;
+      }
+      if (second == nothing && location == room02)
+      {
+        print "(to the branch)^";
+        second = tree;
+      }
+      if (second == nothing)
+        "You'll have to tell me what to tie it to.";
+      if (second == bucket)
+      {
+        while (child(bucket) ~= 0)
+          move child(bucket) to rope_bucket;
+        move rope_bucket to parent(self);
+        remove bucket;
+        remove self;
+        "You tie the rope to the bucket.";
+      }
+      if (second == tree && location == room02)
+      {
+        remove self;
+        give dummy_rope ~absent;
+        MoveFloatingObjects();
+        "You tie the rope to the branch.";
+      }
+      "You can't tie the rope to ",(ThatOrThose)second, ".";
+  ],
+has;
+
+!========================================
+! Room 2: Midway up Hanging Tree
+!========================================
+Object room02 "Midway up Hanging Tree"
+with
+  description "You're midway up the hanging tree, perched on the branch that extends over the ground below. It's unsafe to climb any higher, so the only way out of the tree is down.",
+  d_to room01,
+  u_to CANT_CLIMB_ANY_HIGHER,
+  cant_go "If you try going that way, you'll fall out of the tree.",
+  before
+  [;
+    Hint:
+      if (dummy_rope in self && self hasnt general)
+      {
+        give self general;
+        print_ret (string)ROPE_LOOKS_USEFUL;
+      }
+      if (dummy_rope in self)
+        print_ret (string)UNTIE_ROPE;
+    Jump:
+      print "It's too far to jump. The only safe option is to climb down ";
+      if (dummy_rope in self)
+        print "the rope or ";
+      "the tree.";
+  ],
+  after
+  [;
+    Drop:
+      move noun to room01;
+      print (The)noun," fall";
+      if (noun hasnt pluralname)
+        print "s";
+      " to the ground below.";
+  ],
+has light;
+
+!========================================
+! Room 3: Rattlesnake Wells
+!========================================
+Object room03 "Rattlesnake Wells"
+with
+  description "You're at Rattlesnake Wells, so named because of the water well here and the prevalence of rattlesnakes in the area. You could probably go down the well, or return to the east.",
+  e_to room01,
+  d_to
+  [;
+    if (snake has animate)
+      "The snake is guarding the well. You can't get past it.";
+    move ledge to self;
+    return room04;
+  ],
+  before
+  [;
+    Hint:
+      if (snake has animate)
+        "Back home, your father used to say, ~The only good snake is a dead snake, but keep yer distance boy. Them rattlers is deadly.~";
+      if (room04 hasnt visited)
+        "Try climbing down the well.";
+      if (water in nothing && TestScope(rope_bucket))
+        print_ret (string)GET_WATER_WITH_BUCKET;
+      if (water in nothing && TestScope(bucket))
+        print_ret (string)TIE_ROPE_TO_BUCKET;
+      if (water in nothing)
+        print_ret (string)GET_WATER;
+    Listen:
+      if (noun == nothing && snake has animate)
+        "You hear the occasional hissing and rattling of the rattlesnake.";
+  ],
+has light;
+
+!----------------------------------------
+! Well
+!----------------------------------------
+Object "well" room03
+with
+  parse_name
+  [ nw i flag;
+    nw = NextWord();
+    while (nw == 'rattlesnake' or 'well' or 'wells')
+    {
+      i++;
+      if (nw == 'rattlesnake' && TestScope(snake))
+        flag++;
+      nw = NextWord();
+    }
+    if (i == flag)
+      return 0;
+    return i;
+  ],
+  description
+  [;
+    print "It's a water well. ";
+    if (snake has animate)
+      "The rattlesnake is between you and the well, so you can't get close enough to see if there's anything in it.";
+    move ledge to location;
+    print "When you look down the well, you can't see the bottom, so it must be very deep. You can make out a ledge in the darkness just inside the well.";
+    if (silver in room04)
+      print " You can see a glint from something shiny on the ledge, but you can't tell what it is in the darkness.";
+    " If you're careful, you could probably enter the well to get to the ledge.";
+  ],
+  before
+  [;
+    Climb, Enter:
+      <<Go FAKE_D_OBJ>>;
+  ],
+has scenery;
+
+!----------------------------------------
+! Darkness (floating object)
+!----------------------------------------
+Object "darkness"
+with
+  name 'dark' 'darkness',
+  description "Darkness means lack of light. Surely, you know that.",
+  found_in room03 room04,
+has scenery;
+
+!----------------------------------------
+! Ledge
+!----------------------------------------
+Object ledge "ledge"
+with
+  name 'ledge' 'slime' 'slimy',
+  description "You can't see it clearly from here. You'll need to enter the well.",
+has scenery;
+
+!----------------------------------------
+! Snake
+!----------------------------------------
+Object snake "snake" room03
+with
+  parse_name
+  [ i;
+    while (NextWord() == 'snake' or 'rattlesnake' or 'western' or 'diamondback' or 'rattler' or 'dead')
+      i++;
+    return i;
+  ],
+  short_name
+  [;
+    if (self hasnt animate)
+    {
+      print "dead ";
+      rfalse;
+    }
+  ],
+  description
+  [;
+    print "It's probably a western diamondback rattlesnake. They're very common around these parts - and very deadly. ";
+    if (self has animate)
+      "You'd best keep your distance.";
+    else
+      "However, this one is dead.";
+  ],
+  initial
+  [;
+    if (self has animate)
+      "Your blood chills with fear at the sight of a huge, horrible rattlesnake guarding the well.";
+  ],
+  life
+  [;
+    Answer, Ask, Tell:
+      "You try conversing with the snake, but, quite to your surprise, it doesn't respond.";
+    Attack:
+      if (second == nothing && rock in player)
+      {
+        print "(with the rock)^";
+        second = rock;
+      }
+      if (second == nothing)
+        "You'll need a suitable weapon.";
+      if (second == shovel)
+        "Good idea, but you can't get close enough to safely ", (address)verb_word, " the snake with the shovel.";
+      if (second ~= rock)
+        "You can't ", (address)verb_word, " the snake with ", (ThatOrThose)second, ".";
+      give self ~animate moved;
+      move rock to location;
+      "You throw the rock at the snake and smash its head in. Nice shot! The snake is now dead, hence harmless, but still very scary.";
+    Give, Show:
+      "Keep your distance.";
+    Kiss:
+      "The only kiss you'll get from that snake is the kiss of death.";
+    Talk:
+      "~Hisss.~";
+  ],
+  before
+  [;
+    Attack:
+      "It's already dead.";
+    Drop:
+      if (location == room19)
+        "You'd better hang on to the snake, as that's the only thing that's keeping the vicious dog at bay.";
+    Take, Touch:
+      if (self has animate)
+        "You're not a snake handler, so you don't handle live snakes, thank you very much.";
+  ],
+has animate neuter;
+
+!----------------------------------------
+! Bulk water (floating water)
+!----------------------------------------
+Object bulk_water "water"
+with
+  article SOME,
+  parse_name
+  [;
+    if (NextWord() == 'water' && ~~(TestScope(water)))
+      return 1;
+    return 0;
+  ],
+  description "You can't see the water from here, but you know it's in the bottom of the well.",
+  before
+  [;
+    Drink:
+      "You can't reach it from here.";
+    Take:
+      if (snake has animate)
+        "The snake won't let you near the well.";
+      if (second == nothing && rope_bucket in player)
+      {
+        print "(with the bucket)^";
+        second = rope_bucket;
+      }
+      if (second == nothing)
+        "You'll need to tell me what to get it with.";
+      if (second hasnt container)
+        "You'll need a container to get the water and ", (the)second, " is certainly not a container.";
+      if (second ~= rope_bucket)
+        "You can't reach the water with ", (the)second, ".";
+      if (child(second) ~= 0)
+        "You'll have to empty ", (the)second, " first.";
+      if (second notin player)
+      {
+        print "(first taking ", (the)second, ")^";
+        move second to player;
+      }
+      move water to second;
+      PronounNotice(water);
+      "Using the rope tied to the bucket, you lower the bucket down the well, then hoist it back up. The bucket now contains some clean, fresh drinking water.";
+  ],
+  found_in room04 room03,
+has scenery;
+
+!----------------------------------------
+! Water
+!----------------------------------------
+Object water "water"
+class Liquid
+with
+  article SOME,
+  name 'water',
+  description "It's the crystal clear water that you got from the well.",
+  before
+  [;
+    Drink:
+      "You scoop a mouthful of water from ", (the)parent(self), " to quench your thirst.";
+    Insert, PourT:
+      if (second == cup)
+        "The cup is intended for tea, not water.";
+      if (second == jug)
+        "The jug is intended for milk, not water.";
+  ],
+has;
+
+!========================================
+! Room 4: Ledge inside Well
+!========================================
+Object room04 "Ledge inside Well"
+with
+  description "You're on a narrow ledge just inside the well where you're protected from the hot sun outside. Be careful, the ledge is very slippery. When you look down, you see nothing but darkness below. The only way out is up.",
+  u_to room03,
+  d_to "It's too deep and you can't see the bottom.",
+  out_to room03,
+  before
+  [;
+    Hint:
+      if (silver hasnt moved)
+        print_ret (string)GET_TREASURE;
+      if (water in nothing && TestScope(rope_bucket))
+        print_ret (string)GET_WATER_WITH_BUCKET;
+      if (water in nothing && TestScope(bucket))
+        print_ret (string)TIE_ROPE_TO_BUCKET;
+      if (water in nothing)
+        print_ret (string)GET_WATER;
+    Listen:
+      if (noun == nothing)
+        "You hear the occasional dripping of water at the bottom of the well.";
+  ],
+has light;
+
+!----------------------------------------
+! Well
+!----------------------------------------
+Object "well" room04
+with
+  name 'well' 'solid' 'bedrock',
+  description "It's a deep well that appears to be carved out of the solid bedrock.",
+has scenery;
+
+!----------------------------------------
+! Ledge
+!----------------------------------------
+Object "ledge" room04
+with
+  name 'ledge' 'narrow' 'slime' 'slimy',
+  description "It's quite slimy. Be careful that you don't slip, as it's a long way to the bottom of the well.",
+has scenery;
+
+!----------------------------------------
+! Silver (treasure)
+!----------------------------------------
+Object silver "*silver*" room04
+with
+  article SOME,
+  parse_name
+  [ i;
+    while (NextWord() == 'silver' or 'shiny' or 'chunk' or 'of' or 'treasure' or 'treasures//p')
+      i++;
+    return i;
+  ],
+  description
+  [;
+    print "It's a shiny chunk of silver.";
+    if (self hasnt moved)
+      print " You wonder what it's doing here. You deduce that it fell out of someone's pocket when they were getting water.";
+    "";
+  ],
+  after
+  [;
+    Drop:
+      DropTreasure();
+    Take:
+      TakeTreasure();
+  ],
+has;
+
+!========================================
+! Room 5: Sandy Desert
+!========================================
+Object room05 "Sandy Desert"
+with
+  description "The desert seems to stretch out forever to the east. It's hard to walk in the soft sand. You might be better off returning to the west, unless you want to be buzzard bait.",
+  e_to room05,
+  w_to room01,
+  before
+  [;
+    Dig:
+      if (noun == nothing)
+        <<Dig sand>>;
+    Hint:
+      if (key in nothing)
+        "That sand looks soft.";
+      if (key in self)
+        "Keys have a tendency to unlock things.";
+  ],
+has light;
+
+!----------------------------------------
+! Sandy desert
+!----------------------------------------
+Object sand "sand" room05
+with
+  article SOME,
+  name 'sand' 'sandy' 'desert' 'soft',
+  description "There's nothing but sand, as far as the eye can see.",
+  before
+  [;
+    Dig:
+      if (second == nothing && shovel in player)
+      {
+        print "(with the shovel)^";
+        second = shovel;
+      }
+      if (second == nothing)
+        "The sand is too hot to dig with your bare hands. You'll need something to dig with.";
+      if (second ~= shovel)
+        "You can't dig with ", (ThatOrThose)second, ".";
+      if (key in nothing)
+      {
+        move key to location;
+        "You found something buried in the sand.";
+      }
+    Take:
+      "You have no need for desert sand.";
+  ],
+has scenery;
+
+!----------------------------------------
+! Key
+!----------------------------------------
+Object key "key"
+with
+  name 'old' 'weather-worn' 'key',
+  description
+  [;
+    print "It's an old, weather-worn key";
+    if (self hasnt general)
+      ", but you don't know what it opens.";
+    else
+      " that opens the door to the jail.";
+  ],
+has;
+
+!========================================
+! Room 6: Street
+!========================================
+Object room06 "Street"
+with
+  description "You're in a dusty street at the northern end of the town. The street continues to the south or you can leave the town to the north. There's a jail to the east and a saloon to the west.",
+  n_to room01,
+  s_to room09,
+  e_to jail_door,
+  w_to room07,
+  in_to EAST_OR_WEST,
+  before
+  [;
+    Hint:
+      if (room07 hasnt visited)
+        "The saloon is open.";
+      if (room08 hasnt visited && jail_door has locked)
+        "Locked doors generally require a key.";
+      if (room08 hasnt visited && jail_door hasnt open)
+        "Open the door. It's not going to eat you.";
+      if (room08 hasnt visited)
+        "The jail awaits.";
+  ],
+has light;
+
+!----------------------------------------
+! Street (floating object)
+!----------------------------------------
+Object "street"
+with
+  parse_name
+  [ i;
+    while (NextWord() == 'street' or 'hoof' or 'print' or 'prints' or 'wagon' or 'rut' or 'ruts' or 'hard-baked' or 'dust' or 'dusty' or 'dirt' or 'road')
+      i++;
+    return i;
+  ],
+  description "Hoof prints and wagon ruts are frozen forever in the hard-baked dirt of the street.",
+  each_turn
+  [;
+    if (action == ##Help or ##Hint)
+      return;
+    switch(random(60))
+    {
+      1: "^A tumbleweed rolls down the street.";
+      2: "^A sudden gust of wind blows dust in your face.";
+      3: "^An eagle flies overhead.";
+      4: "^You hear the guttural screech of a vulture nearby. You hope it's not planning on making you its next meal.";
+      5: "^A pack rat scurries across the street.";
+      6: "^A coyote howls in the distance.";
+    }
+  ],
+  found_in
+  [;
+    if (location == room06 or room09 or room12 or room15 or room18)
+      rtrue;
+  ],
+has scenery;
+
+!----------------------------------------
+! Last chance saloon (floating object)
+!----------------------------------------
+Object "Last Chance Saloon"
+with
+  name 'last' 'chance' 'saloon' 'bar',
+  description "Before the town was deserted, the saloon would have been your last chance to quench your thirst before heading out into the desert to prospect for gold.",
+  before
+  [;
+    Enter:
+      if (self in room06)
+        <<Go FAKE_W_OBJ>>;
+    Exit:
+      if (self in room07)
+        <<Go FAKE_E_OBJ>>;
+  ],
+  found_in room06 room07,
+has proper scenery;
+
+!----------------------------------------
+! Hardrock Jail (floating object)
+!----------------------------------------
+Object "Hardrock Jail"
+with
+  name 'hardrock' 'jail' 'gaol',
+  description "Jails like this were all too common during the gold rush.",
+  before
+  [;
+    Enter:
+      if (self in room06)
+        <<Go FAKE_E_OBJ>>;
+    Exit:
+      if (self in room08)
+        <<Go FAKE_W_OBJ>>;
+  ],
+  found_in room06 room08,
+has proper scenery;
+
+!----------------------------------------
+! Jail door (floating object)
+!----------------------------------------
+Object jail_door "jail door"
+with
+  parse_name
+  [ nw i flag;
+    nw = NextWord();
+    while (nw == 'door' or 'solid' or 'wood' or 'wooden' or 'jail' or 'gaol' or 'bands' or 'heavy' or 'iron' or 'reinforcing')
+    {
+      i++;
+      if (nw == 'jail' or 'gaol')
+        flag++;
+      nw = NextWord();
+    }
+    if (i == flag)
+      return 0;
+    return i;
+  ],
+  description
+  [;
+    print "It's a solid wooden door with bands of heavy iron reinforcing. The door is currently ";
+    if (self has open)
+      "open.";
+    else
+      "closed.";
+  ],
+  door_dir
+  [;
+    if (self in room06)
+      return e_to;
+    else
+      return w_to;
+  ],
+  door_to
+  [;
+    if (self in room06)
+      return room08;
+    else
+      return room06;
+  ],
+  after
+  [;
+    Unlock:
+      give key general;
+  ],
+  with_key key,
+  found_in room06 room08,
+has door openable lockable locked scenery;
+
+!========================================
+! Room 7: Last Chance Saloon
+!========================================
+Object room07 "Last Chance Saloon"
+with
+  description "You're in the Last Chance Saloon. This would have been a hive of activity in its heyday. You imagine the clinking of glasses, the bawdy conversation, the squeals of the saloon girls and the occasional fist fights between the drunken patrons. But now it's deserted. The exit is to the east.",
+  e_to room06,
+  out_to room06,
+  before
+  [;
+    Hint:
+      if (saloon_sign hasnt general)
+        print_ret (string)READ_SIGN;
+      if (mirror in nothing)
+        "Reflect on the riddle and answer it using SAY <answer>.";
+      if (mirror hasnt general)
+        "Examine the mirror.";
+      if (gold in nothing)
+        "I think you need something percolated to pep you up.";
+      if (gold in self && gold hasnt moved)
+        print_ret (string)GET_TREASURE;
+    Smell:
+      if (noun == nothing && gold notin nothing)
+        "You smell the aroma of the coffee, even though it's no longer here.";
+  ],
+  after
+  [ nw;
+    Go:
+      if (selected_direction == w_to)
+      {
+        <Look>;
+        print "^As you enter the saloon, the aroma that greets you isn't the stale smoke and whiskey that you would have expected. Instead, you ";
+        if (gold in nothing)
+          "feel magic in the air.";
+        else
+          "smell a hint of coffee.";
+      }
+    Say:
+      wn = consult_from;
+      if (consult_words == 1)
+        nw = NextWord();
+      if (nw == 'mirror' && mirror in nothing)
+      {
+        move mirror to location;
+        "Suddenly, a mirror appears on the wall opposite the sign.";
+      }
+      if (nw == 'coffee' && gold in nothing)
+      {
+        move gold to location;
+        "Suddenly, you smell the aroma of fresh coffee that appears on the bar. A passing prospector also smells it, rushes into the bar and takes the coffee with him. However, he does leave a gold nugget as payment.";
+      }
+      if (nw == 'coffee')
+        "All that's left of the coffee is the aroma.";
+  ],
+has light;
+
+!----------------------------------------
+! Kettle
+!----------------------------------------
+Object kettle "kettle" room07
+class ContainerForLiquids
+with
+  name 'kettle',
+  description
+  [;
+    print "It's a cast iron kettle that's used to boil water over an open flame. ";
+    <<Search self>>;
+  ],
+  before
+  [;
+    Receive:
+      if (noun ~= tea or water)
+        "The kettle is intended for tea or water, not ", (a)noun, ".";
+  ],
+has container open;
+
+!----------------------------------------
+! Sign at Last Chance Saloon
+!----------------------------------------
+Object saloon_sign "sign" room07
+with
+  name 'sign' 'small' 'blackboard',
+  description
+  [;
+    print "It's a small sign, somewhat like a blackboard.";
+    if (self hasnt general)
+      print " Try reading it.";
+    "";
+  ],
+  before
+  [;
+    Read:
+      give self general;
+      "The sign says:^^'Some things you need,^Can be found here.^Just say the word,^And they will appear.^^Item #1:^I hang on the wall,^With nothing to do.^When you look at me,^I look at you.'^^You can't make out the last four or five lines. They look backwards or something.";
+    Take:
+      print_ret (string)ATTACHED_TO_WALL;
+  ],
+has static;
+
+!----------------------------------------
+! Mirror
+!----------------------------------------
+Object mirror "mirror"
+with
+  name 'mirror',
+  description
+  [;
+    give self general;
+    "The rest of the sign can now be seen reflected in the mirror. It says:^^'Item #2:^Sometimes I'm perky,^Sometimes I'm a drip.^When I'm freshly brewed,^Would you like a sip?'";
+  ],
+  before
+  [;
+    Attack:
+      "Breaking the mirror would bring you seven years' of bad luck, so you decide against it.";
+    Take:
+      print_ret (string)ATTACHED_TO_WALL;
+  ],
+has static;
+
+!----------------------------------------
+! Gold (treasure)
+!----------------------------------------
+Object gold "*gold*"
+with
+  article SOME,
+  parse_name
+  [ i;
+    while (NextWord() == 'gold' or 'large' or 'nugget' or 'treasure' or 'treasures//p')
+      i++;
+    return i;
+  ],
+  description "It's a large gold nugget.",
+  after
+  [;
+    Drop:
+      DropTreasure();
+    Take:
+      TakeTreasure();
+  ],
+has;
+
+!========================================
+! Room 8: Hardrock Jail
+!========================================
+Object room08 "Hardrock Jail"
+with
+  description "You're in the Hardrock Jail. Before the town was deserted, this would have housed a sheriff, a few deputies and a jail full of felons awaiting the hangman's noose, but there's no longer anyone here. The exit is west.",
+  w_to jail_door,
+  out_to jail_door,
+  before
+  [;
+    Hint:
+      if (cup hasnt moved)
+        "Your cup runneth over...or it will when you fill it up.";
+  ],
+has light;
+
+!----------------------------------------
+! Cup
+!----------------------------------------
+Object cup "cup" room08
+class ContainerForLiquids
+with
+  name 'cup' 'plain' 'small' 'porcelain',
+  description
+  [;
+    print "It's a small porcelain cup, plain, but practical, and perfect for a cup of tea. ";
+    <<Search self>>;
+  ],
+  before
+  [;
+    Receive:
+      if (noun ~= tea)
+       "The cup is intended for tea, not ", (a)noun, ".";
+  ],
+has container open;
+
+!========================================
+! Room 9: Street
+!========================================
+Object room09 "Street"
+with
+  description "You're in a dusty street that goes from north to south through the town. There's a hotel to the east and a tea room to the west.",
+  n_to room06,
+  s_to room12,
+  e_to room11,
+  w_to room10,
+  in_to EAST_OR_WEST,
+  before
+  [;
+    Hint:
+      if (room10 hasnt visited)
+        "The tea room is open.";
+      if (room11 hasnt visited)
+        "The hotel is open.";
+      if (kitten in self)
+        "Kittens like milk.";
+      if (ruby in self && ruby hasnt moved)
+        print_ret (string)GET_TREASURE;
+    Listen:
+      if (noun == nothing && kitten in self)
+        "You hear the occasional ~meow~ from the hungry kitten.";
+  ],
+has light;
+
+!----------------------------------------
+! Steep's Tea Room (floating object)
+!----------------------------------------
+Object tea_room "Steep's Tea Room"
+with
+  parse_name
+  [ nw i flag;
+    nw = NextWord();
+    while (nw == 'steep^s' or 'tea' or 'room')
+    {
+      i++;
+      if (nw == 'tea' && (TestScope(leaves) || TestScope(tea)))
+        flag++;
+      nw = NextWord();
+    }
+    if (i == flag)
+      return 0;
+    return i;
+  ],
+  description "This is Steep's Tea Room, but there's no sign of Steep.",
+  before
+  [;
+    Enter:
+      if (self in room09)
+        <<Go FAKE_W_OBJ>>;
+    Exit:
+      if (self in room10)
+        <<Go FAKE_E_OBJ>>;
+  ],
+  found_in room09 room10,
+has proper scenery;
+
+!----------------------------------------
+! Golden Well Hotel (floating object)
+!----------------------------------------
+Object "Golden Well Hotel"
+with
+  name 'golden' 'well' 'hotel',
+  description "This looks to be the town's only place of accommodation. Many a weary body would have rested here in the past.",
+  before
+  [;
+    Enter:
+      if (self in room09)
+        <<Go FAKE_E_OBJ>>;
+    Exit:
+      if (self in room11)
+        <<Go FAKE_W_OBJ>>;
+  ],
+  found_in room09 room11,
+has proper scenery;
+
+!----------------------------------------
+! Kitten
+!----------------------------------------
+Object kitten "kitten"
+with
+  name 'kitten' 'cat' 'pussy',
+  description "Aw, how cute. This little fluffball looks out of place in this deserted town. She looks shy and hungry.",
+  life
+  [;
+    Answer, Ask, Tell:
+      "The kitten just purrs and rubs up against your leg, as though she wants something.";
+    Attack:
+      "She's too cute. You haven't got the heart to attack a poor defenceless little kitten.";
+    Give:
+      if (noun == milk && TestScope(milk))
+      {
+        if (parent(milk) in player)
+        {
+          print "You put ", (the)parent(milk), " on the ground. ";
+          move parent(milk) to location;
+        }
+        remove kitten;
+        remove milk;
+        move ruby to location;
+        "The kitten laps up the milk and runs off briefly. The now-full kitten returns with a pack rat and drops it at your feet to show her appreciation. The pack rat then drops something and runs off, with the kitten in hot pursuit.";
+      }
+    Show:
+      if (noun == milk)
+        "Ooh, that's got her attention.";
+    Talk:
+      "~Meow.~";
+  ],
+  before
+  [;
+    Take, Touch:
+      "She's too shy. She runs away from you, then sneaks back.";
+  ],
+has animate female;
+
+!----------------------------------------
+! Ruby (treasure)
+!----------------------------------------
+Object ruby "*ruby*"
+with
+  parse_name
+  [ i;
+    while (NextWord() == 'ruby' or 'deep' or 'red' or 'square-cut' or 'treasure' or 'treasures//p')
+      i++;
+    return i;
+  ],
+  description "It's a deep red, square-cut ruby that looks to be very valuable.",
+  after
+  [;
+    Drop:
+      DropTreasure();
+    Take:
+      TakeTreasure();
+  ],
+has;
+
+!========================================
+! Room 10: Steep's Tea Room
+!========================================
+Object room10 "Steep's Tea Room"
+with
+  description "You're in Steep's Tea Room. It looks like Steep disappeared, along with the other townsfolk. If you want a cup of tea, you'll have to make it yourself. The exit is to the east.",
+  e_to room09,
+  out_to room09,
+  before
+  [ i;
+    Hint:
+      if (steeps_sign hasnt general)
+        print_ret (string)READ_SIGN;
+      if (englishman in self && englishman hasnt general)
+        "Try talking to the Englishman.";
+      if (englishman in self)
+        "Find all the equipment and ingredients needed to make a cup of tea.";
+      if (emerald in self && emerald hasnt moved)
+        print_ret (string)GET_TREASURE;
+    Listen:
+      if (noun == nothing && englishman in self)
+        "You hear the Englishman grumbling about the poor service in Steep's Tea Room.";
+    Make:
+      if (noun == tea)
+      {
+        if (englishman in nothing)
+          "The Englishman has gone and there's no one else around that would appreciate a good cup of tea.";
+        if (TestScope(kettle))
+          i++;
+        if (TestScope(water))
+          i++;
+        if (TestScope(leaves))
+          i++;;
+        if (TestScope(jug))
+          i++;
+        if (TestScope(milk))
+          i++;
+        if (TestScope(sugar))
+          i++;
+        if (TestScope(cup))
+          i++;
+        if (TestScope(matches))
+          i++;
+        if (TestScope(magazines))
+          i++;
+        if (i < 9)
+        {
+          print "You're missing ", 9 - i, " of the things needed to make a good cup of tea. Try reading the sign";
+          if (steeps_sign has general)
+            print " again";
+          ".";
+        }
+        if (kettle notin location)
+        {
+          move kettle to location;
+          print "You put down the kettle. ";
+        }
+        if (water notin kettle)
+          print "You pour the water into the kettle. ";
+        remove water;
+        move tea to kettle;
+        if (jug notin location)
+        {
+          move jug to location;
+          print "You put down the jug. ";
+        }
+        if (milk notin jug)
+        {
+          move milk to jug;
+          print "You pour the milk into the jug. ";
+        }
+        if (cup notin location)
+        {
+          move cup to location;
+          print "You put down the cup. ";
+        }
+        if (matches notin player)
+        {
+          move matches to player;
+          print "You get the matches. ";
+        }
+        score = score + 30;
+        remove englishman;
+        remove magazines;
+        move emerald to self;
+        move kitten to room09;
+        move horse to room22;
+        "You put the magazines into the stove and light them with the matches. When it's hot, you put the kettle on the stove and boil the water. You then remove the kettle from the stove and add some tea leaves. The Englishman looks on with an air of approval. When the tea has steeped, you pour it into the cup, add milk and sugar and give it a stir. You hand it to the grateful Englishman, who sips and savours the cup of tea, then leaves the empty cup and a big tip. ~Thank you my good man. Your blood's worth bottling.~ With that, he scarpers.";
+      }
+  ],
+  after
+  [;
+    Go:
+      if (selected_direction == w_to && englishman in self)
+      {
+        <Look>;
+        "^An elegantly-dressed, but crabby-looking, Englishman looks at you as you enter the tea room, then turns away. It looks like he needs a nice cup of tea.";
+      }
+  ],
+has light;
+
+!----------------------------------------
+! Stove
+!----------------------------------------
+Object "stove" room10
+with
+  name 'stove' 'small' 'fuel-burning',
+  description "It's a small fuel-burning stove that's obviously used for boiling water to make a cup of tea.",
+  before
+  [;
+    Open:
+      print "There's no need to do that.";
+      if (steeps_sign has general)
+        print " Just MAKE TEA when you're ready and I'll handle the details.";
+      "";
+  ],
+has static;
+
+!----------------------------------------
+! Sign at Steep's Tea Room
+!----------------------------------------
+Object steeps_sign "sign" room10
+with
+  name 'sign',
+  description
+  [;
+    print "It's more like a blackboard that's used to write the day's menu. It looks like the normal menu has been replaced by instructions for making a cup of tea.";
+    if (self hasnt general)
+      print " Try reading it.";
+    "";
+  ],
+  before
+  [;
+    Read:
+      give self general;
+      "'For a good cup of tea, you'll need a kettle of water, tea leaves, a jug of milk, sugar and a cup to pour it into. You'll also need matches and something flammable to light the stove.^^Bring all the items here, then MAKE TEA.'";
+    Take:
+      print_ret (string)ATTACHED_TO_WALL;
+  ],
+has static;
+
+!----------------------------------------
+! Chair
+!----------------------------------------
+Object chair "chair" room10
+with
+  parse_name
+  [ i;
+    while (NextWord() == 'dark' or 'wood' or 'wooden' or 'high-back' or 'chair' or 'arm' or 'arms')
+      i++;
+    return i;
+  ],
+  description "It's a dark wooden high-back chair with arms. It looks pretty sturdy.",
+  react_before
+  [;
+    Drop:
+      if (player in self && noun in player && noun hasnt worn)
+      {
+        move noun to real_location;
+        print (The)noun, " fall";
+        if (noun hasnt pluralname)
+          print "s";
+        " to the ground.";
+      }
+    Take:
+      if (player in self && noun in location && noun hasnt scenery or static)
+        "You can't reach ", (the)noun, " while you're standing on the chair.";
+  ],
+  before
+  [;
+    Climb:
+      if (self in player)
+        "You'll have to drop it first.";
+      if (player in self)
+        <<Exit self>>;
+      else
+        <<Enter self>>;
+    Enter:
+      if (self in player)
+        "You'll have to drop it first.";
+      if (verb_word == 'lie')
+        "It's not big enough to lie on.";
+      if (verb_word == 'sit')
+        "You sit down briefly, decide that you're wasting time and stand up again.";
+    Go:
+      if (selected_direction == u_to)
+      {
+        if (location == room20)
+        {
+          print "You climb onto the top of the boulder.^^";
+          PlayerTo(room21);
+          return 2;
+        }
+        print (string)CANT_CLIMB_ANY_HIGHER,"^";
+        return 2;
+      }
+      if (selected_direction == d_to)
+      {
+        <Exit self>;
+        return 2;
+      }
+      print "You'll have to get off the chair first.^";
+      return 2;
+  ],
+  after
+  [;
+    Enter:
+      "You stand on the chair.";
+    Exit:
+      "You get off the chair.";
+  ],
+has enterable supporter;
+
+!----------------------------------------
+! Jug
+!----------------------------------------
+Object jug "jug" room10
+class ContainerForLiquids
+with
+  name 'jug' 'ceramic',
+  description
+  [;
+    print "It's a small ceramic jug. ";
+    <<Search self>>;
+  ],
+  before
+  [;
+    Drop:
+      if (location == room09 && kitten in location && milk in self)
+        <<Give milk kitten>>;
+    Receive:
+      if (noun ~= milk)
+        "The jug is intended for milk, not ", (a)noun, ".";
+  ],
+has container open;
+
+!----------------------------------------
+! Unhappy Englishman
+!----------------------------------------
+Object englishman "unhappy Englishman" room10
+with
+  article AN,
+  name 'englishman' 'english' 'man',
+  description "He's a stuffy-looking gentleman with a big droopy mustache. He seems to be mumbling something about ~What good's a tea room without a good cup of tea?~",
+  life
+  [;
+    Ask:
+      switch (second)
+      {
+        'cup':
+          if (AskAbout(cup))
+            rtrue;
+          print_ret (string)TRY_SALOON_OR_HOTEL;
+        'diamond', 'diamonds':
+          if (AskAbout(diamonds))
+            rtrue;
+          print_ret (string)YOU_TELL_ME;
+        'dusty', 'me', 'myself', 'self':
+          "~Sorry, pal. I don't know you, but I'm pleased to meet you just the same.~";
+        'englishman', 'him', 'himself', 'man':
+          "~I thought it would be a bit of a lark travelling around America, but it's hard to get a good cup of tea anywhere.~";
+        'gold':
+          if (AskAbout(gold))
+            rtrue;
+          print_ret (string)YOU_TELL_ME;
+        'jade':
+          if (AskAbout(jade))
+            rtrue;
+          print_ret (string)YOU_TELL_ME;
+        'jug':
+          if (AskAbout(jug))
+            rtrue;
+          "~There was one here earlier, but you took it.~";
+        'kettle':
+          if (AskAbout(kettle))
+            rtrue;
+          print_ret (string)TRY_SALOON_OR_HOTEL;
+        'match', 'matches':
+          if (AskAbout(matches))
+            rtrue;
+          print_ret (string)TRY_SALOON_OR_HOTEL;
+        'milk':
+          if (AskAbout(milk))
+            rtrue;
+          "~There's a pasture south of town. You could try there.~";
+        'silver':
+          if (AskAbout(silver))
+            rtrue;
+          print_ret (string)YOU_TELL_ME;
+        'steep':
+          "~Don't ask me where he is. I haven't seen him. I hope he's getting some supplies so that he can make me a cup of tea.~";
+        'sugar', 'cubes':
+          if (AskAbout(sugar))
+            rtrue;
+          print_ret (string)TRY_SALOON_OR_HOTEL;
+        'tea':
+          if (AskAbout(leaves))
+            rtrue;
+          "~If I've got a choice, I like a good Oolong tea. Otherwise, whatever you've got, but none of that American sweet tea or cowboy tea.~";
+        'treasure', 'treasures':
+          print_ret (string)YOU_TELL_ME;
+        'water':
+          if (AskAbout(water))
+            rtrue;
+          "~There's a well at the north end of town. You should be able to find water there.~";
+        default:
+          "~Sorry, I don't know what you're talking about. Your American accent is hard to understand.~";
+      }
+    Answer, Tell:
+      "The only thing I'm interested in is getting a cup of tea.";
+    Attack:
+      "What did the Englishman do to deserve that? The poor fellow just wants a cup of tea.";
+    Give, Show:
+      "~What are you showing me ", (ThatOrThose)noun, " for? The only thing I'm interested in is a good cup of tea.~";
+    Talk:
+      give self general;
+      "~What's one got to do to get a cup of tea around here? The whole town seems to be deserted.~";
+  ],
+has animate;
+
+!----------------------------------------
+! Tea
+!----------------------------------------
+Object tea "tea"
+class Liquid
+with
+  article SOME,
+  name 'tea' 'leftover',
+  description "It's the leftover tea that you made for the Englishman.",
+  before
+  [;
+!    if (self has scenery && action == ##Examine)
+!      <<Examine tea_room>>;
+    if (self has scenery && action ~= ##Make)
+    {
+      PrintMsg(MSG_PARSER_NOSUCHTHING);
+      rtrue;
+    }
+    Drink:
+      if (self in kettle)
+        "You'd burn your lips on the kettle. Pour it into a cup.";
+      remove self;
+      "Ooh, that was good. You do make a good brew, I must say.";
+    Insert, PourT:
+      if (second == jug)
+        "The jug is intended for milk, not tea.";
+      if (second == bucket or rope_bucket)
+        "The bucket is intended for water, not tea.";
+  ],
+has;
+
+!----------------------------------------
+! Emerald (treasure)
+!----------------------------------------
+Object emerald "*emerald*"
+with
+  article AN,
+  parse_name
+  [ i;
+    while (NextWord() == 'emerald' or 'dark' or 'green' or 'square-cut' or 'gemstone' or 'treasure' or 'treasures//p')
+      i++;
+    return i;
+  ],
+  description "It's a dark green, square-cut gemstone and very valuable.",
+  after
+  [;
+    Drop:
+      DropTreasure();
+    Take:
+      TakeTreasure();
+  ],
+has;
+
+!========================================
+! Room 11: Golden Well Hotel
+!========================================
+Object room11 "Golden Well Hotel"
+with
+  description "You're in the Golden Well Hotel. The curiously named hotel looks pretty run down. Hopefully, you won't have to spend the night here. The exit is to the west.",
+  w_to room09,
+  out_to room09,
+  before
+  [;
+    Hint:
+      if (safe hasnt general)
+        "I'd give you the good oil, but the safe needs it.";
+      if (safe hasnt open && jade hasnt moved)
+        "Open sesame.";
+      if (safe has open && jade hasnt moved)
+        print_ret (string)GET_TREASURE;
+  ],
+has light;
+
+!----------------------------------------
+! Safe
+!----------------------------------------
+Object safe "safe" room11
+class OpenableContainer
+with
+  parse_name
+  [ i;
+    while (NextWord() == 'safe' or 'hinge' or 'hinges' or 'free-standing' or 'gunmetal' or 'grey' or 'gray')
+      i++;
+    return i;
+  ],
+  description
+  [;
+    print "It's a free-standing safe in gunmetal grey. ";
+    if (self hasnt general)
+      print "The hinges are rusty. ";
+    else
+      print "The hinges have recently been oiled. ";
+    <<Search self>>;
+  ],
+  before
+  [;
+    Oil:
+      if (second == nothing && can in player)
+      {
+        print "(with the oil can)^";
+        second = can;
+      }
+      if (second == nothing)
+        "You'll have to tell me what you want to oil it with.";
+      if (second ~= can)
+        "You can't oil the safe with ", (ThatOrThose)second, ".";
+      if (self has general)
+        "You've already oiled it. There's no need to overdo it.";
+      give self general;
+      "You oil the hinges on the safe. It should open now.";
+    Open:
+      if (self hasnt general)
+        "The hinges are rusty. They need to be oiled before the safe can be opened.";
+  ],
+has container openable static;
+
+!----------------------------------------
+! Jade (treasure)
+!----------------------------------------
+Object jade "*jade*" safe
+with
+  article SOME,
+  parse_name
+  [ i;
+    while (NextWord() == 'jade' or 'large' or 'chunk' or 'of' or 'deep' or 'green' or 'uncut' or 'treasure' or 'treasures//p')
+      i++;
+    return i;
+  ],
+  description "It's a large chunk of deep green, uncut jade, which is a precious mineral used for ornaments and jewellery.",
+  after
+  [;
+    Drop:
+      DropTreasure();
+    Take:
+      TakeTreasure();
+  ],
+has;
+
+!----------------------------------------
+! Box of matches
+!----------------------------------------
+Object matches "box of matches" room11
+with
+  parse_name
+  [ i;
+    while (NextWord() == 'airtight' or 'tin' or 'box' or 'of' or 'phosphorus' or 'match' or 'matches' or 'matchbox')
+      i++;
+    return i;
+  ],
+  description "It's an airtight tin box containing phosphorus matches.",
+  before
+  [;
+    Burn:
+      "There's no need to light a match. ", (string)ILL_LIGHT_IT_FOR_YOU;
+    Open:
+      "There's no need to open the box first. ", (string)ILL_LIGHT_IT_FOR_YOU;
+  ],
+has;
+
+!========================================
+! Room 12: Street
+!========================================
+Object room12 "Street"
+with
+  description "You're on a dusty street at the centre of the town. The street continues to the north and south. There's a livery stable to the east and a doctor's office to the west.",
+  n_to room09,
+  s_to room15,
+  e_to room14,
+  w_to room13,
+  in_to EAST_OR_WEST,
+  before
+  [;
+    Hint:
+      if (rock hasnt moved)
+        "That rock would make a good projectile.";
+      if (room13 hasnt visited)
+        "The doctor will see you now.";
+      if (room14 hasnt visited)
+        "The stable is open.";
+  ],
+has light;
+
+!----------------------------------------
+! Doctor's office (floating object)
+!----------------------------------------
+Object "doctor's office"
+with
+  name 'doctor^s' 'doctor' 'office',
+  description "There's no sign of a doctor in this office, so you'd better not get sick.",
+  before
+  [;
+    Enter:
+      if (self in room12)
+        <<Go FAKE_W_OBJ>>;
+    Exit:
+     if (self in room13)
+        <<Go FAKE_E_OBJ>>;
+  ],
+  found_in room12 room13,
+has scenery;
+
+!----------------------------------------
+! Livery stable (floating object)
+!----------------------------------------
+Object "livery stable"
+with
+  name 'livery' 'stable',
+  description "The livery stable is normally used for the care, feeding and stabling of horses for a fee, but there are no horses here any more.",
+  before
+  [;
+    Enter:
+      if (self in room12)
+        <<Go FAKE_E_OBJ>>;
+    Exit:
+     if (self in room14)
+        <<Go FAKE_W_OBJ>>;
+  ],
+  found_in room12 room14,
+has scenery;
+
+!----------------------------------------
+! Rock
+!----------------------------------------
+Object rock "rock" room12
+with
+  name 'rock',
+  description "This could do a lot of damage if thrown accurately.",
+  before
+  [;
+    ThrowAt:
+      if (second == nothing && snake in location && snake has animate)
+      {
+        print "(at the snake)^";
+        second = snake;
+      }
+      if (second == snake && snake in location && snake has animate)
+        <<Attack snake rock>>;
+  ],
+has;
+
+!========================================
+! Room 13: Doctor's Office
+!========================================
+Object room13 "Doctor's Office"
+with
+  description "You're in the doctor's office, but the doctor is nowhere to be seen. He must have left the town along with everyone else. The exit from the office is to the east.",
+  e_to room12,
+  out_to room12,
+  before
+  [;
+    Hint:
+      if (magazines hasnt moved || tweezers hasnt moved || can hasnt moved)
+        "An apple a day kept this doctor away, but he left some stuff behind.";
+  ],
+has light;
+
+!----------------------------------------
+! Magazines
+!----------------------------------------
+Object magazines "magazines" room13
+with
+  name 'investment' 'magazine' 'magazines',
+  description
+  [;
+    print "These are the earliest issues of 'Investment Magazine'. They sure do look boring.";
+    if (self hasnt general)
+      print " Perhaps you should read them.";
+    "";
+  ],
+  before
+  [;
+    Read:
+      if (location == thedark)
+        print_ret (string)TOO_DARK_TO_READ;
+      give self general;
+      "You flick through the pages of 'Investment Magazine', but there's nothing of any great interest apart from a few articles on the dangers of gold fever. You reckon the only use for these magazines is for starting a fire.";
+  ],
+has pluralname;
+
+!----------------------------------------
+! Tweezers
+!----------------------------------------
+Object tweezers "tweezers" room13
+with
+  name ,
+  parse_name
+  [ i;
+    while (NextWord() == 'tweezers' or 'tweezer' or 'large' or 'pair' or 'of')
+      i++;
+    return i;
+  ],
+  description "It's a rather large pair of tweezers, which would be handy for removing large splinters.",
+  before
+  [;
+    Use:
+      "Try GET <object> WITH TWEEZERS.";
+  ],
+has pluralname;
+
+!----------------------------------------
+! Can of oil
+!----------------------------------------
+Object can "can of oil" room13
+with
+  name 'can' 'of' 'oil' 'oilcan',
+  description "It's a can of oil that's used for lubricating machines or filling oil-based lanterns.",
+  before
+  [;
+    PutOn:
+      if (second == safe)
+        <<Oil safe self>>;
+    Wave:
+      "You can hear the oil splooshing around inside. It sounds like there's plenty of oil.";
+  ],
+has;
+
+!========================================
+! Room 14: Livery Stable
+!========================================
+Object room14 "Livery Stable"
+with
+  description "You're in the livery stable. With all the hay on the ground, the livery stable looks more comfortable than the hotel. The exit is to the west.",
+  w_to room12,
+  out_to room12,
+  before
+  [;
+    Hint:
+      if (shovel hasnt moved)
+        "A shovel is good for digging.";
+      if (bucket hasnt moved)
+        "A bucket is good for holding liquids.";
+      if (hay in nothing)
+        "Hay is good for feeding horses and cattle.";
+    Smell:
+      if (noun == nothing)
+        <<Smell bulk_hay>>;
+  ],
+has light;
+
+!----------------------------------------
+! Shovel
+!----------------------------------------
+Object shovel "shovel" room14
+with
+  name 'shovel',
+  description "This shovel is designed for shovelling horse manure, but you could also use it for digging.",
+has;
+
+!----------------------------------------
+! Bulk hay
+!----------------------------------------
+Object bulk_hay "pile of hay" room14
+with
+  parse_name
+  [ nw i flag;
+    nw = NextWord();
+    while (nw == 'pile' or 'of' or 'hay')
+    {
+      i++;
+      if (nw == 'hay' && TestScope(hay))
+        flag++;
+      nw = NextWord();
+    }
+    if (i == flag)
+      return 0;
+    return i;
+  ],
+  description "The hay is used to feed the horses, but there are no horses here.",
+  before
+  [;
+    Smell:
+      "The hay smells musty.";
+    Take:
+      if (hay in nothing && children(player) == MAX_CARRIED)
+      {
+        PrintMsg(MSG_TAKE_NO_CAPACITY);
+        rtrue;
+      }
+      if (hay in nothing)
+      {
+        move hay to player;
+        "You take a large handful of hay.";
+      }
+      "You've already taken some hay.";
+  ],
+has static;
+
+!----------------------------------------
+! Handful of hay
+!----------------------------------------
+Object hay "handful of hay"
+with
+  name 'handful' 'of' 'hay',
+  description "It's the handful of hay that you took from the livery stable.",
+  before
+  [;
+    Drop:
+      if (location == room14)
+      {
+        remove self;
+        "You add the hay back to the pile.";
+      }
+      if (location == room16)
+        <<Give hay cow>>;
+  ],
+has;
+
+!----------------------------------------
+! Bucket
+!----------------------------------------
+Object bucket "bucket" room14
+class ContainerForLiquids
+with
+  name 'bucket' 'pail',
+  description
+  [;
+    print "It's a small bucket, possibly a milk pail. ";
+    <<Search self>>;
+  ],
+  before
+  [;
+    Drop:
+      if (location == room09 && kitten in location && milk in self)
+        <<Give milk kitten>>;
+    Receive:
+      if (noun ~= milk or water)
+        "The bucket is intended for milk or water, not ", (a)noun, ".";
+    Tie:
+      if (second == rope)
+      {
+        while (child(self) ~= 0)
+          move child(self) to rope_bucket;
+        move rope_bucket to parent(self);
+        remove rope;
+        remove self;
+        "You tie the bucket to the rope.";
+      }
+  ],
+has container open;
+
+!----------------------------------------
+! Rope tied to bucket
+!----------------------------------------
+Object rope_bucket "bucket"
+class ContainerForLiquids
+with
+  article "a rope tied to a",
+  name 'rope' 'bucket' 'pail',
+  description
+  [;
+    print "It's the rope from the hanging tree tied to the bucket from the livery stable. ";
+    <<Search self>>;
+  ],
+  before
+  [;
+    Drop:
+      if (location == room09 && kitten in location && milk in self)
+        <<Give milk kitten>>;
+    Receive:
+      if (noun ~= milk or water)
+        "The bucket is intended for milk or water, not ", (a)noun, ".";
+    Untie:
+      while (child(self) ~= 0)
+        move child(self) to bucket;
+      move bucket to parent(self);
+      move rope to parent(self);
+      remove self;
+      "You untie the rope from the bucket.";
+  ],
+has container open;
+
+!========================================
+! Room 15: Street
+!========================================
+Object room15 "Street"
+with
+  description "You're in a dusty street towards the southern end of the town. The street continues to the north and south. There are no more buildings, but there's a corral to the east and a pasture to the west.",
+  n_to room12,
+  s_to room18,
+  e_to room17,
+  w_to room16,
+  in_to room17,
+  before
+  [;
+    Hint:
+      if (room16 hasnt visited)
+        "You hear a mooing in the pasture.";
+      if (room17 hasnt visited)
+        "The corral is open.";
+  ],
+has light;
+
+!----------------------------------------
+! Pasture (floating object)
+!----------------------------------------
+Object "pasture"
+with
+  name 'green' 'pasture',
+  description "It's an unusually green pasture, considering the dry environment throughout the rest of the town.",
+  found_in room15 room16,
+has scenery;
+
+!----------------------------------------
+! Limping Horse Corral (floating object)
+!----------------------------------------
+Object "Limping Horse Corral"
+with
+  name 'limping' 'horse' 'corral',
+  description "You can see that it's a corral, but you can't see any limping horses. In fact, you can't see any horses.",
+  before
+  [;
+    Enter:
+      if (self in room15)
+        <<Go FAKE_E_OBJ>>;
+    Exit:
+     if (self in room17)
+        <<Go FAKE_W_OBJ>>;
+  ],
+  found_in room15 room17,
+has proper scenery;
+
+!========================================
+! Room 16: Pasture
+!========================================
+Object room16 "Pasture"
+with
+  description "You're in a pasture just off the main street of the town. You can return to the town by going east.",
+  e_to room15,
+  before
+  [;
+    Hint:
+      if (cow hasnt general)
+        "The cow could do with a good feed.";
+      if (milk in nothing)
+        "Try milking the cow.";
+    Listen:
+      if (noun == nothing)
+        "The cow moos occasionally.";
+    Smell:
+      if (noun == nothing)
+        "You smell a hint of cow dung.";
+  ],
+has light;
+
+!----------------------------------------
+! Cow
+!----------------------------------------
+Object cow "cow" room16
+with
+  name 'cow',
+  description
+  [;
+    if (self hasnt general)
+      "This is the most pathetic-looking cow you ever have seen. Get her some food before it's too late.";
+    else
+      "She looks pretty content.";
+  ],
+  initial
+  [;
+    print "There's a ";
+    if (self hasnt general)
+      print "mighty hungry";
+    else
+      print "contented";
+    " cow here.";
+  ],
+  life
+  [;
+    Answer, Ask, Tell:
+      "The cow doesn't seem interested in conversing with you. She just swishes her tail.";
+    Attack:
+      "Attacking the cow is not a good idea. She's much bigger than you and would probably trample you.";
+    Give:
+      if (noun == hay)
+      {
+        remove hay;
+        give self general;
+        "The cow swishes her tail as she munches on the hay. She looks content now.";
+      }
+    Kiss:
+      print_ret (string)PTEW;
+    Talk:
+      "~Moo.~";
+  ],
+  before
+  [;
+    Milk:
+      if (cow hasnt general)
+        "The hungry cow is too nervous and backs away from you.";
+      if (milk notin nothing)
+        "You've already milked the cow. She has no more to give at the moment. Perhaps you could try again after you've used the milk that you've already got.";
+      if (second == nothing && (bucket in player || rope_bucket in player))
+      {
+        print "(with the bucket)^";
+        if (bucket in player)
+          second = bucket;
+        else
+          second = rope_bucket;
+      }
+      if (second == nothing)
+        "You'll need a bucket to put the milk in.";
+      if (second ~= bucket or rope_bucket)
+        "You can't get the milk with ", (a)second, ".";
+      if (child(second) ~= 0)
+        "You'll need to empty the bucket first.";
+      move milk to second;
+      "You milk the cow and partially fill the bucket with fresh, creamy milk.";
+  ],
+has animate female;
+
+!----------------------------------------
+! Bulk milk
+!----------------------------------------
+Object bulk_milk "milk" room16
+with
+  article SOME,
+  parse_name
+  [;
+    if (NextWord() == 'milk' && ~~(TestScope(milk)))
+      return 1;
+    return 0;
+  ],
+  description "You can't see any milk here. Any milk would be in the cow's udder.",
+  before
+  [;
+    Drink:
+      "It's a bit hard to drink the milk while it's inside the cow. Try milking her first.";
+    Take:
+      "It's a bit hard to take the milk while it's inside the cow. Try milking her first.";
+  ],
+has scenery;
+
+!----------------------------------------
+! Milk
+!----------------------------------------
+Object milk "milk"
+class Liquid
+with
+  article SOME,
+  name 'milk',
+  description "It's fresh cow's milk and looks very creamy.",
+  before
+  [;
+    Drink:
+      "You take a sip of the milk just to taste it. It's very creamy.";
+    Insert, PourT:
+      if (second == cup)
+        "The cup is intended for tea, not milk.";
+      if (second == kettle)
+        "The kettle is intended for water, not milk.";
+  ],
+has;
+
+!========================================
+! Room 17: Limping Horse Corral
+!========================================
+Object room17 "Limping Horse Corral"
+with
+  description "You're in the Limping Horse Corral. That's a strange name for a corral, but, hey, who are you to judge? The exit is to the west.",
+  w_to room15,
+  out_to room15,
+  before
+  [;
+    Hint:
+      if (sugar hasnt moved)
+        "Horses like sugar cubes, but where are the horses?";
+      if (horse in self)
+        "You could try mounting or riding the horse.";
+    Smell:
+      if (noun == nothing)
+        "You smell a hint of horse manure.";
+  ],
+has light;
+
+!----------------------------------------
+! Sugar cubes
+!----------------------------------------
+Object sugar "sugar cubes" room17
+with
+  name 'sugar' 'cube' 'cubes',
+  description "They're sugar cubes that are still in good condition, despite being left in the corral. Horses love 'em.",
+  before
+  [;
+    Drop:
+      if (location == room22 && horse in location)
+      {
+        give horse general;
+        remove sugar;
+        print_ret (string)HORSE_EDGES_CLOSER, "that you dropped on the ground", (string)MADE_A_FRIEND;
+      }
+    Eat:
+      "You might have a sweet tooth, but not THAT sweet. Leave the sugar cubes for the horses.";
+  ],
+has pluralname;
+
+!========================================
+! Room 18: Street
+!========================================
+Object room18 "Street"
+with
+  description "You're in a dusty street south of the town. The street ends here with open areas to the south and east and a miner's shack to the west. Otherwise, you can follow the street back to the north.",
+  n_to room15,
+  s_to room22,
+  e_to room20,
+  w_to
+  [;
+    if (snake notin player)
+    {
+      StartDaemon(room19);
+      "A vicious dog chases you out of the shack and back into the street.";
+    }
+    print "A vicious dog barks at you, but backs off when it sees the dead snake. He probably thinks it's alive.^^";
+    StopDaemon(room19);
+    return room19;
+  ],
+  before
+  [;
+    Go:
+      if (selected_direction == in_to)
+        <<Go FAKE_W_OBJ>>;
+    Hint:
+      if (room20 hasnt visited)
+        "The fresh air of the open field beckons to the east.";
+      if (room19 hasnt visited)
+        "Have you visited the miner's shack? If you have and you weren't made welcome, hang around in the street for a clue.";
+  ],
+has light;
+
+!----------------------------------------
+! Miner's shack (floating object)
+!----------------------------------------
+Object "miner's shack"
+with
+  name 'miner^s' 'shack',
+  description "It's a ramshackle shack that has clearly been abandoned by its former owner.",
+  before
+  [;
+    Enter:
+      if (self in room18)
+        <<Go FAKE_W_OBJ>>;
+    Exit:
+     if (self in room19)
+        <<Go FAKE_E_OBJ>>;
+  ],
+  found_in room18 room19,
+has scenery;
+
+!========================================
+! Room 19: Miner's Shack
+!========================================
+Object room19 "Miner's Shack"
+with
+  description "You're in an abandoned miner's shack. There's a trapdoor in the floor and an exit to the east.",
+  e_to room18,
+  out_to room18,
+  d_to trapdoor,
+  before
+  [;
+    Hint:
+      if (leaves hasnt moved)
+        "The miner left some tea leaves behind.";
+      if (room23 hasnt visited && trapdoor hasnt open)
+        "Open the trapdoor.";
+      if (room23 hasnt visited)
+        "I wonder what's under the trapdoor.";
+    Listen:
+      if (noun == nothing)
+        "You hear something growling...and it's not your stomach.";
+  ],
+  daemon
+  [;
+    self.number++;
+    if (location ~= room01 or room03 or room06 or room09 or room12 or room15 or room18)
+      return;
+    if (self.number > 20 && self hasnt general)
+    {
+      give self general;
+      "^A passing tourist tells you that his dog ran off after seeing a dead snake.";
+    }
+    if (self.number > 50 && TestScope(snake))
+    {
+      StopDaemon(self);
+      "^A coyote strolls by, sees the dead snake and runs away with its tail between its legs.";
+    }
+  ],
+  number 0,
+has light;
+
+!----------------------------------------
+! Trapdoor (floating object)
+!----------------------------------------
+Object trapdoor "trapdoor"
+with
+  name 'wood' 'wooden' 'trapdoor' 'door',
+  description
+  [;
+    print "It's a wooden trapdoor that leads to ";
+    if (self in room19 && room23 hasnt visited)
+      print "who knows where";
+    else if (self in room19)
+      print "the cellar";
+    else
+      print "the abandoned miner's shack";
+    print ". The trapdoor is currently ";
+    if (self has open)
+      "open.";
+    else
+      "closed.";
+  ],
+  door_dir
+  [;
+    if (self in room19)
+      return d_to;
+    else
+      return u_to;
+  ],
+  door_to
+  [;
+    if (self in room19)
+      return room23;
+    else
+      return room19;
+  ],
+  after
+  [;
+    Close:
+      give room23 ~light;
+      PrintMsg(MSG_CLOSE_DEFAULT, 'close');
+      if (self in room23 && lantern hasnt light)
+      {
+        new_line;
+        PlayerTo(room23);
+      }
+      rtrue;
+    Open:
+      give room23 light;
+      PrintMsg(MSG_OPEN_DEFAULT);
+      if (self in room23 && lantern in room23 or player && lantern hasnt light)
+        new_line;
+      rtrue;
+  ],
+  found_in room19 room23,
+has door moved openable scenery;
+
+!----------------------------------------
+! Packet of tea leaves
+!----------------------------------------
+Object leaves "packet of tea leaves" room19
+with
+  parse_name
+  [ nw i flag;
+    nw = NextWord();
+    while (nw == 'plain' or 'packet' or 'of' or 'dark' or 'tea' or 'leaf' or 'leaves')
+    {
+      i++;
+      if (nw == 'tea' && TestScope(tea) && tea hasnt scenery || (tea has scenery && action == ##Make))
+        flag++;
+      nw = NextWord();
+    }
+    if (i == flag)
+      return 0;
+    return i;
+  ],
+  description "It's a plain packet of dark tea leaves. The tea was no doubt imported from China in tea chests, then packaged in the US.",
+  before
+  [;
+    Read:
+      if (location == thedark)
+        print_ret (string)TOO_DARK_TO_READ;
+      "There's nothing written on the packet. You'll need a fortune teller to read the tea leaves.";
+  ],
+has;
+
+!----------------------------------------
+! Dog
+!----------------------------------------
+Object dog "dog" room19
+with
+  name 'dog',
+  description "The dog is cowering in the corner, clearly frightened of the dead rattlesnake.",
+  life
+  [;
+    Answer, Ask, Tell:
+      "The dog just growls.";
+    Kiss:
+      "Do you have a death wish or something?";
+    Talk:
+      "~Woof, woof! Grrr...~";
+  ],
+  before
+  [;
+    Take:
+      "Are you crazy? That dog looks like it wants to eat you.";
+    Touch:
+      "The dog growls and snaps at you.";
+  ],
+has animate;
+
+!========================================
+! Room 20: Field
+!========================================
+Object room20 "Field"
+with
+  description "You're in a grassy field. The only way out of here is back to the west.",
+  w_to room18,
+  u_to
+  [;
+    if (player notin chair)
+      "The boulder is too high, get something to stand on.";
+    else
+      return room21;
+  ],
+  before
+  [;
+    Hint:
+      if (room21 hasnt visited && player notin chair)
+        "If you want to scale that boulder, you'll have to get higher.";
+      if (room21 hasnt visited)
+        "Up, up and away! You can climb the boulder now.";
+  ],
+has light;
+
+!----------------------------------------
+! Field (floating object)
+!----------------------------------------
+Object "field"
+with
+  name 'grass' 'grassy' 'field',
+  description "The grassy field peters out towards the west.",
+  found_in room20 room21,
+has scenery;
+
+!----------------------------------------
+! Boulder
+!----------------------------------------
+Object boulder "boulder" room20
+with
+  name 'boulder' 'huge' 'sheer' 'walls',
+  description "It's a huge boulder with sheer walls. To climb it, you'll need something to stand on.",
+  before
+  [;
+    Climb:
+      <<Go FAKE_U_OBJ>>;
+  ],
+has static;
+
+!========================================
+! Room 21: Top of Boulder
+!========================================
+Object room21 "Top of Boulder"
+with
+  description "You're standing on top of a boulder with a view over the field below. You can't go anywhere other than down.",
+  u_to CANT_CLIMB_ANY_HIGHER,
+  d_to room20,
+  before
+  [;
+    Hint:
+      if (map hasnt general)
+        "Read the map.";
+  ],
+has light;
+
+!----------------------------------------
+! Boulder
+!----------------------------------------
+Object "boulder" room21
+with
+  name 'top' 'of' 'boulder',
+  description "The only way is down.",
+  before
+  [;
+    Climb:
+      <<Go FAKE_D_OBJ>>;
+  ],
+has scenery;
+
+!----------------------------------------
+! Map
+!----------------------------------------
+Object map "map" room21
+with
+  name 'map',
+  description
+  [;
+    print "It looks like a treasure map.";
+    if (self hasnt general)
+      print " Try reading it.";
+    "";
+  ],
+  before
+  [;
+    Read:
+      if (location == thedark)
+        print_ret (string)TOO_DARK_TO_READ;
+      give self general;
+      "It says, 'DOWN WEST WEST SOUTH SOUTH DIG'.";
+  ],
+has;
+
+!========================================
+! Room 22: Range
+!========================================
+Object room22 "Range"
+with
+  description "You're outside of town at the start of the range. It's too far to travel anywhere on foot, so your only option is to go north back to the town.",
+  n_to room18,
+  s_to TOO_FAR_ON_FOOT,
+  e_to TOO_FAR_ON_FOOT,
+  w_to TOO_FAR_ON_FOOT,
+  before
+  [;
+    Hint:
+      if (horse in nothing)
+        "Come back later.";
+      if (horse in self && horse hasnt general)
+        "Try to gain the horse's trust by giving her a sweet treat.";
+      if (horse in self && thorn has scenery)
+        "Did you examine the horse's hoof? The doctor may have something to help.";
+      if (turquoise in self && turquoise hasnt moved)
+        print_ret (string)GET_TREASURE;
+    Listen:
+      if (noun == nothing && horse in self)
+        "You hear the occasional neighing from the limping horse. It sounds like she's in pain.";
+  ],
+has light;
+
+!----------------------------------------
+! Range
+!----------------------------------------
+Object "range" room22
+with
+  name 'range',
+  description "The range spreads out as far as the eye can see to the south, east and west.",
+has scenery;
+
+!----------------------------------------
+! Horse
+!----------------------------------------
+Object horse "horse"
+with
+  name 'limping' 'horse' 'mare',
+  short_name
+  [;
+    if (self in room22)
+    {
+      print "limping ";
+      rfalse;
+    }
+  ],
+  description
+  [;
+    print "She's a mare and she's ";
+    if (self in room17)
+      "no longer limping.";
+    print "limping badly. There's obviously something stuck in her hoof";
+    if (self hasnt general)
+      " and she's keeping her distance from you.";
+    else
+      ", but she's now quite friendly after you gave her the sugar cubes.";
+  ],
+  life
+  [;
+    Answer, Ask, Tell:
+      "She's not a talking horse, like Mr Ed.";
+    Attack:
+      "She's a beautiful animal. Why would you want to hurt her?";
+    Give:
+      if (noun == sugar)
+      {
+        give self general;
+        remove sugar;
+        print_ret (string)HORSE_EDGES_CLOSER, "out of your hand",(string)MADE_A_FRIEND;
+      }
+    Kiss:
+      print_ret (string)PTEW;
+    Talk:
+      "~Neigh! Snort.~";
+  ],
+  before
+  [;
+    Enter:
+      if (self in room17)
+        "Not yet. Wait until you've collected all the treasures.";
+      if (self hasnt general)
+        "She's limping badly and shies away from you.";
+      else
+        "When you try to mount her, she backs away. You'll have to attend to her limp first.";
+  ],
+  add_to_scope hoof,
+has animate female;
+
+!----------------------------------------
+! Hoof
+!----------------------------------------
+Object hoof "hoof"
+with
+  name 'hoof',
+  description
+  [;
+    if (horse in room17)
+      "Her hoof looks fine and she's no longer limping.";
+    if (horse hasnt general)
+      "There's obviously something in her hoof, but you can't get close enough to see what it is. You'll need to befriend her so that you can get closer.";
+    move thorn to room22;
+    "There's a thorn in her hoof. You should try to remove it.";
+  ],
+has scenery;
+
+!----------------------------------------
+! Thorn
+!----------------------------------------
+Object thorn "thorn"
+with
+  name 'thorn',
+  description
+  [;
+    print "It looks like a cactus thorn.";
+    if (self has scenery)
+      print " It's deeply lodged in the horse's hoof.";
+    "";
+  ],
+  before
+  [;
+    Pull, Remove, Take:
+      if (self hasnt scenery)
+        rfalse;
+      if (second == nothing && tweezers in player)
+      {
+        print "(with the tweezers)^";
+        second = tweezers;
+      }
+      if (second == nothing)
+        "You can't get a grip of it. You'll need something to remove it with.";
+      if (second ~= tweezers)
+        "You can't remove the thorn with ", (ThatOrThose)second, ".";
+      give self ~scenery;
+      move self to location;
+      move turquoise to location;
+      move horse to room17;
+      "You grab the thorn with the tweezers, gently pull it out of the horse's hoof and drop it on the ground. The horse is clearly very grateful. She shakes something from her mane and canters back to the corral.";
+  ],
+has scenery;
+
+!----------------------------------------
+! Turquoise (treasure)
+!----------------------------------------
+Object turquoise "*turquoise*"
+with
+  article SOME,
+  parse_name
+  [ i;
+    while (NextWord() == 'turquoise' or 'teardrop-shaped' or 'bluish-green' or 'mineral' or 'treasure' or 'treasures//p')
+      i++;
+    return i;
+  ],
+  description "It's a teardrop-shaped, bluish-green mineral that's been polished to a high sheen. It looks very valuable.",
+  after
+  [;
+    Drop:
+      DropTreasure();
+    Take:
+      TakeTreasure();
+  ],
+has;
+
+!========================================
+! Room 23: Cellar
+!========================================
+Object room23 "Cellar"
+with
+  description
+  [;
+    print "You're in a dark, dingy cellar beneath the abandoned miner's shack. ";
+    if (trapdoor has open)
+      print "Light shines in from the open trapdoor above.";
+    else
+      print "It's very dark with the trapdoor closed.";
+    " A steep slope leads down into darkness.";
+  ],
+  u_to
+  [;
+    if (trapdoor has open && snake notin player)
+      "A vicious dog chases you out of the shack and back into the cellar.";
+    else
+      return trapdoor;
+  ],
+  d_to room24,
+  before
+  [;
+    Hint:
+      if (self hasnt light && trapdoor hasnt open)
+        "Open the trapdoor to let some light in.";
+      if (lantern hasnt moved)
+        "That lantern could be useful in the dark.";
+      if (TestScope(lantern) && lantern hasnt general)
+        "Examine the lantern. Have you found any oil anywhere?";
+      if (TestScope(lantern) && lantern hasnt light)
+        "Light the lantern. Have you found any matches anywhere?";
+  ],
+has;
+
+!----------------------------------------
+! Cellar
+!----------------------------------------
+Object "cellar" room23
+with
+  name 'cellar' 'dark' 'dingy',
+  description "The cellar appears to have been cleaned out before the owner left town.",
+has scenery;
+
+!----------------------------------------
+! Light
+!----------------------------------------
+Object "light" room23
+with
+  name 'light',
+  description "It streams in from the trapdoor overhead.",
+has scenery;
+
+!----------------------------------------
+! Steep slope
+!----------------------------------------
+Object "steep slope"
+with
+  name 'steep' 'slope',
+  description "Follow it to see where it goes.",
+  found_in room23 room24,
+has scenery;
+
+!----------------------------------------
+! Lantern
+!----------------------------------------
+Object lantern "lantern" room23
+with
+  name 'brass' 'lantern' 'lamp',
+  description
+  [;
+    print "It's a brass oil lantern that's ";
+    if (self has light)
+      "currently lit and giving off an eerie yellow glow.";
+    print "not currently lit.";
+    if (self in player)
+    {
+      print " You give it a shake and ";
+      if (self hasnt general)
+        print "don't hear anything. It must be empty.";
+      else
+        print "hear the oil splooshing around inside.";
+    }
+    "";
+  ],
+  before
+  [;
+    Burn:
+      if (self has light)
+        "It's already lit.";
+      if (second == nothing && matches in player)
+      {
+        print "(with the matches)^";
+        second = matches;
+      }
+      if (second == nothing)
+        "You'll need something to light it with.";
+      if (second ~= matches)
+        "You can't light the lantern with ", (ThatOrThose)second, ".";
+      if (self hasnt general)
+        "The lantern is empty. You'll need to fill it with oil.";
+      give self light;
+      "The oil catches light and the lantern gives off an eerie yellow glow.";
+    Extinguish:
+      if (self hasnt light)
+        "It isn't lit.";
+      give self ~light;
+      "You blow out the lantern.";
+    Fill:
+      if (self has light)
+        "It's dangerous to fill the lantern when it's lit. You'll have to extinguish it first.";
+      if (second == nothing && can in player)
+      {
+        print "(with the oil can)^";
+        second = can;
+      }
+      if (second == nothing)
+        "You'll have to tell me what to fill it with.";
+      if (second ~= can)
+        "You can't fill the lantern with ", (ThatOrThose)second, ".";
+      if (self has general)
+        "You top up the oil in the lantern.";
+      give self general;
+      "You fill the lantern with oil. You'll be able to light it now.";
+    Receive:
+      if (noun ~= can)
+        "You can't put ", (ThatOrThose)noun, " in the lantern.";
+      <<Fill self can>>;
+    Wave:
+      if (self notin player)
+        "You'll have to get it first.";
+      if (self has light)
+        "Don't wave it about when it's lit.";
+      print "You give it a shake and ";
+      if (self hasnt general)
+        "don't hear anything. It must be empty.";
+      else
+        "hear the oil splooshing around inside.";
+  ],
+has;
+
+!========================================
+! Room 24: Mineshaft
+!========================================
+Object room24 "Mineshaft"
+with
+  description
+  [;
+    print_ret (string)MINESHAFT_DESCRIPTION, "The mine continues to the south, east and west. There's also a steep slope that goes up.";
+  ],
+  s_to room30,
+  e_to room33,
+  w_to room25,
+  u_to room23,
+has;
+
+!----------------------------------------
+! Mineshaft (floating object)
+!----------------------------------------
+Object "mineshaft"
+with
+  name 'mine' 'shaft' 'mineshaft',
+  description "It's a hand-dug mineshaft with timber supports.",
+  react_before
+  [;
+    Dig:
+      if (map hasnt general)
+        "As a prospector, you know better than to go digging randomly in an unfamiliar mineshaft. You need a map.";
+      if (shovel notin player)
+        "You'll need something to dig with.";
+      if (location == room28 && diamonds in nothing)
+      {
+        move diamonds to location;
+        "You found something.";
+      }
+      "You find nothing but dirt.";
+    Hint:
+      if (diamonds in nothing && room21 hasnt visited)
+        "Mine's are for mining, but you'll need a map.";
+      if (diamonds in nothing && map hasnt general)
+        "Read the map.";
+      if (diamonds in nothing)
+        "Go to the location indicated on the map and dig.";
+  ],
+  found_in
+  [;
+    if (location == room24 or room25 or room26 or room27 or room28 or room29 or room30 or room31 or room32 or room33)
+      rtrue;
+  ],
+  add_to_scope supports,
+has scenery;
+
+!----------------------------------------
+! Timber supports (floating object)
+!----------------------------------------
+Object supports "timber supports"
+with
+  name 'timber' 'support' 'supports',
+  description "The timber supports provide the reinforcing that prevents the mine collapsing and crushing you.",
+has pluralname scenery;
+
+!========================================
+! Room 25: Mineshaft
+!========================================
+Object room25 "Mineshaft"
+with
+  description
+  [;
+    print_ret (string)MINESHAFT_DESCRIPTION, "The mine continues to the south east and west.";
+  ],
+  s_to room29,
+  e_to room24,
+  w_to room26,
+has;
+
+!========================================
+! Room 26: Mineshaft
+!========================================
+Object room26 "Mineshaft"
+with
+  description
+  [;
+    print_ret (string)MINESHAFT_DESCRIPTION, "The mine continues to the south and east.";
+  ],
+  s_to room27,
+  e_to room25,
+has;
+
+!========================================
+! Room 27: Mineshaft
+!========================================
+Object room27 "Mineshaft"
+with
+  description
+  [;
+    print_ret (string)MINESHAFT_DESCRIPTION, "The mine continues to the north, south and east.";
+  ],
+  n_to room26,
+  s_to room28,
+  e_to room29,
+has;
+
+!========================================
+! Room 28: Mineshaft
+!========================================
+Object room28 "Mineshaft"
+with
+  description
+  [;
+    print_ret (string)MINESHAFT_DESCRIPTION, (string)DEAD_END_DESCRIPTION;
+  ],
+  n_to room27,
+  before
+  [;
+    Hint:
+      if (diamonds in self && diamonds hasnt moved)
+        print_ret (string)GET_TREASURE;
+  ],
+has;
+
+!----------------------------------------
+! Dead end (floating object)
+!----------------------------------------
+Object "dead end"
+with
+  name 'dead' 'end',
+  description "It's not literally dead, but you can't go any further.",
+  found_in room28 room31,
+has scenery;
+
+!----------------------------------------
+! Diamonds (treasure)
+!----------------------------------------
+Object diamonds "*diamonds*"
+with
+  parse_name
+  [ i;
+    while (NextWord() == 'diamonds' or 'diamond' or 'single-cut' or 'treasure' or 'treasures//p')
+      i++;
+    return i;
+  ],
+  description
+  [;
+    print "They're single-cut diamonds. They sparkle in the ";
+    if (location has light)
+      "light.";
+    else
+      "dim light of your lantern.";
+  ],
+  after
+  [;
+    Drop:
+      DropTreasure();
+    Take:
+      TakeTreasure();
+  ],
+has pluralname;
+
+!========================================
+! Room 29: Mineshaft
+!========================================
+Object room29 "Mineshaft"
+with
+  description
+  [;
+    print_ret (string)MINESHAFT_DESCRIPTION, "The mine continues to the north east and west.";
+  ],
+  n_to room25,
+  e_to room30,
+  w_to room27,
+has;
+
+!========================================
+! Room 30: Mineshaft
+!========================================
+Object room30 "Mineshaft"
+with
+  description
+  [;
+    print_ret (string)MINESHAFT_DESCRIPTION, "The mine continues to the north, south, east and west.";
+  ],
+  n_to room24,
+  s_to room31,
+  e_to room32,
+  w_to room29,
+has;
+
+!========================================
+! Room 31: Mineshaft
+!========================================
+Object room31 "Mineshaft"
+with
+  description
+  [;
+    print_ret (string)MINESHAFT_DESCRIPTION, (string)DEAD_END_DESCRIPTION;
+  ],
+  n_to room30,
+has;
+
+!========================================
+! Room 32: Mineshaft
+!========================================
+Object room32 "Mineshaft"
+with
+  description
+  [;
+    print_ret (string)MINESHAFT_DESCRIPTION, "The mine continues to the north and west.";
+  ],
+  n_to room33,
+  w_to room30,
+has;
+
+!========================================
+! Room 33: Mineshaft
+!========================================
+Object room33 "Mineshaft"
+with
+  description
+  [;
+    print_ret (string)MINESHAFT_DESCRIPTION, "The mine continues to the south and west.";
+  ],
+  s_to room32,
+  w_to room24,
+has;
+
+!========================================
+! Printing rules
+!========================================
+[ consultWord word i;
+  for (i=0:i<WordLength(word):i++)
+    print (char)LowerCase(WordAddress(word)->i);
+];
+
+[ DoesntOrDont obj;
+  if (obj has pluralname)
+    print "don't";
+  else
+    print "doesn't";
+];
+
+[ firstConsultWord word i;
+  for (i=0:i<WordLength(word):i++)
+    if (i == 0)
+      print (char)UpperCase(WordAddress(word)->i);
+    else
+      print (char)LowerCase(WordAddress(word)->i);
+];
+
+!========================================
+! Other routines
+!========================================
+[ AskAbout obj;
+  if (obj in player)
+    "~I see you've got ", (a)obj, ".~";
+  if (obj in location)
+    "~There's ", (a)obj, " here.~";
+  if (TestScope(obj))
+    "~There's ", (a)obj, " in ", (the)parent(obj), ".~";
+  rfalse;
+];
+
+[ DropTreasure;
+  if (location == room01)
+    score = score + 10;
+];
+
+[ TakeTreasure;
+  if (location == room01)
+    score = score - 10;
+];
+
+[ LowerCase c; ! for ZSCII matching ISO 8859-1
+  switch (c)
+  {
+    'A' to 'Z': c = c + 32;
+    202, 204, 212, 214, 221: c--;
+    217, 218: c = c - 2;
+    158 to 160, 167, 168, 208 to 210: c = c - 3;
+    186 to 190, 196 to 200: c = c - 5 ;
+    175 to 180: c = c - 6;
+  }
+  return c;
+];
+
+[ UpperCase c; ! for ZSCII matching ISO 8859-1
+  switch (c)
+  {
+    'a' to 'z': c = c - 32;
+    201, 203, 211, 213, 220: c++;
+    215, 216: c = c + 2;
+    155 to 157, 164, 165, 205 to 207: c = c + 3;
+    181 to 185, 191 to 195: c = c + 5 ;
+    169 to 174: c = c + 6;
+  }
+  return c;
+];
+
+!========================================
+! Grammar
+!========================================
+[ isMakeable;
+  if (scope_stage == 1)
+    rfalse;!Don't allow multiple objects
+  if (scope_stage == 2)
+  {
+    PlaceInScope(tea);
+    rfalse;
+  }
+  if (scope_stage == 3)
+    "You can't make that.";
+];
+
+Extend 'attack'
+  * noun 'with' held -> Attack;
+
+Extend 'blow'
+  * 'on'/'onto' noun -> Blow
+  * 'out' noun -> Extinguish
+  * noun 'out' -> Extinguish;
+
+Extend 'climb'
+  * 'up' -> Ascend
+  * 'up' noun -> Ascend
+  * 'down' -> Descend
+  * 'down' noun -> Descend
+  * 'in'/'into'/'on'/'onto'/'through' noun -> Enter
+  * 'off'/'out' noun -> Exit
+  * 'off'/'out' 'of' noun -> Exit;
+
+Extend 'dig'
+  * -> Dig;
+
+Extend 'empty'
+  * noun 'in'/'inside' noun -> EmptyT
+  * noun 'from' noun -> Empty reverse;
+
+Extend only 'feed' first
+  * creature 'with' noun -> Give reverse;
+
+Extend 'fill' first
+  * noun 'with' noun -> Fill;
+
+Extend 'get' first
+  * 'down' -> Descend
+  * 'up' -> Exit
+  * noun 'with'/'in' noun -> Take;
+
+Extend 'give' first
+  * noun 'to' creature -> Give
+  * creature noun -> Give reverse
+  * 'over' noun 'to' creature -> Give;
+
+Extend 'lock' first
+  * noun -> Lock;
+
+Extend 'look'
+  * 'into' noun -> Search
+  * 'under' noun -> LookUnder;
+
+Extend 'pry' replace
+  * noun 'with' held -> Pry
+  * 'apart'/'open' noun 'with' held -> Pry
+  * noun 'apart'/'open' 'with' held -> Pry;
+
+Extend only 'put'
+  * 'out' noun -> Extinguish
+  * noun 'out' -> Extinguish;
+
+Extend 'read' first
+  * noun -> Read;
+
+Extend 'remove'
+  * noun 'with' noun -> Take;
+
+Extend only 'say' first
+  * topic -> Say;
+
+Extend only 'speak' replace
+  * -> Talk
+  * creature -> Talk
+  * noun -> Talk
+  * 'to'/'with' creature -> Talk
+  * 'to'/'with' noun -> Talk
+  * 'to'/'with' creature 'about' topic -> Ask
+  * 'to'/'with' noun 'about' topic -> Ask;
+
+Extend 'take' first
+  * noun 'with'/'in' noun -> Take;
+
+Extend 'tie'
+  * noun 'with' noun -> Tie reverse;
+
+Extend only 'throw' first
+  * held -> ThrowAt
+  * held 'across'/'over' noun -> ThrowAt
+  * noun -> Drop
+  * noun 'at'/'against'/'on'/'onto' noun -> ThrowAt
+  * noun 'in'/'inside'/'into' noun -> Insert;
+
+Extend 'unlock' first
+  * noun -> Unlock;
+
+Verb meta 'about' 'info'
+  * -> About;
+
+Verb 'add'
+  * noun 'to' noun -> Insert;
+
+Verb 'ascend'
+  * -> Ascend
+  * noun -> Ascend;
+
+Verb meta 'credits'
+  * -> Credits;
+
+Verb 'descend'
+  * -> Descend
+  * noun -> Descend;
+
+Verb 'extinguish' 'douse' 'snuff' 'unlight'
+  * noun -> Extinguish
+  * noun 'with' held -> Extinguish;
+
+Verb meta 'help' 'instructions'
+  * -> Help;
+
+Verb 'hint' 'clue'
+  * -> Hint;
+
+Verb 'holler' = 'shout';
+
+Verb 'inspect' = 'examine';
+
+Verb 'make' 'brew' 'prepare'
+  * scope=isMakeable -> Make
+  * noun -> Make;
+
+Verb 'milk'
+  * noun -> Milk;
+
+Verb 'mount' 'ride' = 'enter';
+
+Verb 'oil' 'lubricate' 'lube' 'grease'
+  * -> Oil
+  * noun -> Oil
+  * noun 'with' held -> Oil;
+
+Verb 'pat' 'pet' 'stroke' = 'touch';
+
+Verb 'pour'
+  * noun -> Pour
+  * 'out' noun -> Pour
+  * noun 'out' -> Pour
+  * noun 'in'/'into'/'inside'/'on'/'onto'/'to' noun -> PourT
+  * noun 'from' noun -> Pour
+  * noun 'out' 'of' noun -> Pour;
+
+Verb 'shake' = 'wave';
+
+Verb 'talk' 'babble' 'chat' 'communicate' 'converse' 'gab' 'gossip'
+  * -> Talk
+  * creature -> Talk
+  * noun -> Talk
+  * 'to'/'with' creature -> Talk
+  * 'to'/'with' noun -> Talk
+  * 'to'/'with' creature 'about' topic -> Ask
+  * 'to'/'with' noun 'about' topic -> Ask;
+
+Verb 'untie' 'disconnect' 'detach' 'unfasten'
+  * noun -> Untie
+  * noun 'from' noun -> Untie;
+
+Verb 'use'
+  * noun -> Use;
+
+Verb 'xyzzy' 'plover' 'plugh' 'yoho'
+  * -> MagicWord;
+
+!========================================
+! Actions
+!========================================
+[ AboutSub;
+  print "This game was originally known as 'Hangtown'. It was written in Turbo BASIC for IBM-compatible PCs by John H Doolittle circa 1989 and used in his 'Scientific Thinking in Psychology' classes when he was a professor of psychology at California State University, Sacramento.^^It was ported to ZBasic by Eric Thornton and published by Critical Thinking Press as game 1 in the 'Hangtown' trilogy. This was released for the Apple II in 1989 and the Macintosh in 1992.^^John continued to update the game until 1996 and released the Turbo BASIC source code in 2023. This was ported to Inform 6 by Garry Francis using the PunyInform library. It was then enhanced in collaboration with the original author to become 'Hangman's Gulch'.^^";
+  <<Credits>>;
+];
+
+[ AscendSub;
+  <<Go FAKE_U_OBJ>>;
+];
+
+[ CreditsSub;
+  "Original concept by John H Doolittle.^Game design and coding by Garry Francis.^Play testing by Audrey Lee, Jade J Aincioa, John H Doolittle and Timur Ozturk.";
+];
+
+[ DescendSub;
+  <<Go FAKE_D_OBJ>>;
+];
+
+[ ExtinguishSub;
+  if (ObjectIsUntouchable(noun))
+    return;
+  "You can't extinguish ", (ThatOrThose)noun, ".";
+];
+
+[ GiveSub;
+  if(ObjectIsUntouchable(second))
+    return;
+  if (~~IndirectlyContains(player, noun))
+  {
+    PrintMsg(MSG_GIVE_NOT_HOLDING);
+    rtrue;
+  }
+  if (second == player)
+  {
+    PrintMsg(MSG_GIVE_PLAYER);
+    rtrue;
+  }
+  if (RunLife(second, ##Give) ~= 0)
+    rfalse;
+  PrintMsg(MSG_GIVE_DEFAULT);
+];
+
+[ GoSub _prop;
+  if (selected_direction == ne_to or nw_to or se_to or sw_to)
+    "There are no diagonal directions in this game.";
+  _prop = selected_direction;
+#Iftrue RUNTIME_ERRORS > RTE_MINIMUM;
+  if (_prop == 0)
+    return _RunTimeError(ERR_INVALID_DIR_PROP);
+#Endif;
+  return GoDir(_prop);
+];
+
+[ HelpSub;
+  print "Tell me what to do using simple commands starting with a verb.^^Use LOOK (or L) to refresh the location description. Identify all the objects in the description and EXAMINE (or X) each one. Read responses carefully for hints.^^Use compass directions (N, S, E, W, U and D) to move around. Draw a map as you go.^^Use GET or TAKE to take objects and DROP to drop them again. Use INVENTORY (or I) to see what you're carrying.^^Use AGAIN (or G) to repeat the last command.^^";
+#Ifv5;
+  print "Use UNDO to undo the last command if you make a mistake.^^";
+#Endif;
+  "Use SCORE to get your current score and number of turns taken.^^Use SAVE to save the game and RESTORE to restore it again.^^There are over 100 verbs that you can use, so if something doesn't work, try a different verb or a different way of doing things. Use HINT if you get stuck.^^For full instructions, see the game's home page at https://drdooriddle.itch.io/hangmans-gulch/.";
+];
+
+[ HintSub;
+  if (location == thedark)
+    "It's dangerous to wander about in the dark. Find a light source.";
+  "There's nothing to do here at the moment. Make sure you examine everything and draw a map.";
+];
+
+[ LockSub k;
+  if (ObjectIsUntouchable(noun))
+    return;
+  if (noun hasnt lockable)
+  {
+    PrintMsg(MSG_LOCK_NOT_A_LOCK, 'lock');
+    rtrue;
+  }
+  if (noun has locked)
+  {
+    PrintMsg(MSG_LOCK_ALREADY_LOCKED);
+    rtrue;
+  }
+  if (noun has open)
+  {
+    PrintMsg(MSG_LOCK_CLOSE_FIRST);
+    rtrue;
+  }
+  k = RunRoutines(noun, with_key);
+  if (k == nothing)
+    "You can't see how to lock ", (ItOrThem)noun, ".";
+  if (second == nothing && k ~= nothing && k in player)
+  {
+    second = k;
+    print "(with ", (the)second, ")^";
+  }
+  if (second == nothing)
+    "You don't have the key.";
+  if (second ~= k)
+  {
+    PrintMsg(MSG_LOCK_KEY_DOESNT_FIT);
+    rtrue;
+  }
+  give noun locked;
+  run_after_routines_msg = MSG_LOCK_DEFAULT;
+  run_after_routines_arg_1 = 'lock';
+];
+
+[ LookUnderSub;
+  if (location == thedark)
+    "But it's dark.";
+  "You find nothing of interest.";
+];
+
+[ MagicWordSub;
+  "There's a puff of smoke and Yosemite Sam appears with his six-shooters drawn and firing wildly into the air. ~Where's that long-eared varmint?~ He looks around, realises he's in the wrong cartoon and disappears just as quickly as he arrived.";
+];
+
+[ MakeSub;
+  if (ObjectIsUntouchable(noun))
+    return;
+  "You can't make ", (ThatOrThose)noun, ".";
+];
+
+[ MilkSub;
+  if (ObjectIsUntouchable(noun))
+    return;
+  "You can't milk ", (ThatOrThose)noun, ".";
+];
+
+[ OilSub;
+  if (noun == nothing)
+    "You'll have to tell me what you want to ", (address)verb_word, ".";
+  if (ObjectIsUntouchable(noun))
+    return;
+  "You can't ", (address)verb_word, " ", (ThatOrThose)noun, ".";
+];
+
+[ PourSub;
+  if (ObjectIsUntouchable(noun))
+    return;
+  "You can't pour ", (ThatOrThose)noun, ".";
+];
+
+[ PourTSub;
+  if (ObjectIsUntouchable(noun))
+    return;
+  "You can't pour ", (ThatOrThose)noun, ".";
+];
+
+[ PrySub;
+  if (ObjectIsUntouchable(noun))
+    return;
+  if (AfterRoutines() == 1)
+    rtrue;
+  if (keep_silent == 1)
+    rtrue;
+  "You can't pry ", (ThatOrThose)noun, " apart.";
+];
+
+[ ReadSub;
+  if (ObjectIsUntouchable(noun, true))
+    "I suppose you read tea leaves, too";
+  "There's nothing legible on ", (ThatOrThose)noun, ".";
+];
+
+[ SaySub i;
+  if (consult_words == 0)
+    "You have nothing to say.";
+  print "~";
+  i = consult_from;
+  print (firstConsultWord)i++;
+  while (i < consult_from + consult_words)
+    print " ", (consultWord)i++;
+  print ".~^^";
+  if (AfterRoutines())
+    return;
+  wn = consult_from;
+  if (consult_words == 1 && NextWord() == 'xyzzy' or 'plover' or 'plugh' or 'yoho')
+    <<MagicWord>>;
+  "Nothing happens.";
+];
+
+[ TalkSub;
+  if (noun == nothing)
+    "You start talking to no one in particular.";
+  if (noun == player)
+    "You start talking to yourself, but it's a one-sided conversation.";
+  if (RunLife(noun, ##Talk))
+    rtrue;
+  print_ret (The)noun, " ", (IsOrAre)noun, " not very talkative.";
+];
+
+[ UnlockSub k;
+  if (ObjectIsUntouchable(noun))
+    return;
+  if (noun hasnt lockable)
+  {
+    PrintMsg(MSG_UNLOCK_NOT_A_LOCK, 'unlock');
+    rtrue;
+  }
+  if (noun hasnt locked)
+  {
+    PrintMsg(MSG_UNLOCK_ALREADY_UNLOCKED, 'unlock');
+    rtrue;
+  }
+  k = RunRoutines(noun, with_key);
+  if (k == nothing)
+    "You can't see how to unlock ", (ItOrThem)noun, ".";
+  if (second == nothing && k ~= nothing && k in player)
+  {
+    second = k;
+    print "(with ", (the)second, ")^";
+  }
+  if (second == nothing)
+    "You don't have the key.";
+  if (second ~= k)
+  {
+    PrintMsg(MSG_UNLOCK_KEY_DOESNT_FIT);
+    rtrue;
+  }
+  give noun ~locked;
+  run_after_routines_msg = MSG_UNLOCK_DEFAULT;
+  run_after_routines_arg_1 = 'unlock';
+];
+
+[ UntieSub;
+  if (noun == nothing)
+    "What do you want to untie?";
+  "You can't untie ", (ThatOrThose)noun, ".";
+];
+
+[ UseSub;
+  if (ObjectIsUntouchable(noun))
+    return;
+  "You'll have to be more explicit than that.";
+];
+
+End;

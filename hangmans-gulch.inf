@@ -727,7 +727,18 @@ with
   [;
     Answer, Ask, Tell:
       "You try conversing with the snake, but, quite to your surprise, it doesn't respond.";
+    Give, Show:
+      "Keep your distance.";
+    Kiss:
+      "The only kiss you'll get from that snake is the kiss of death.";
+    Talk:
+      "~Hisss.~";
+  ],
+  before
+  [;
     Attack:
+      if (self hasnt animate)
+        "It's already dead.";
       if (second == nothing && rock in player)
       {
         print "(with the rock)^";
@@ -742,17 +753,6 @@ with
       give self ~animate moved;
       move rock to location;
       "You throw the rock at the snake and smash its head in. Nice shot! The snake is now dead, hence harmless, but still very scary.";
-    Give, Show:
-      "Keep your distance.";
-    Kiss:
-      "The only kiss you'll get from that snake is the kiss of death.";
-    Talk:
-      "~Hisss.~";
-  ],
-  before
-  [;
-    Attack:
-      "It's already dead.";
     Drop:
       if (location == room19)
         "You'd better hang on to the snake, as that's the only thing that's keeping the vicious dog at bay.";
